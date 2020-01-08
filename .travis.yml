@@ -1,0 +1,21 @@
+language: ruby
+
+rvm:
+  - 2.4
+  - 2.5
+  - 2.6
+  - 2.7
+
+before_install:
+  - gem update --system
+  - gem install bundler
+
+notifications:
+  email:
+    on_failure: always
+    on_success: change
+    recipients:
+      - dev-ci@maxmind.com
+  slack:
+    rooms:
+      secure: "wuwMo+BWnaBtkt1uGAi4Zd0EARX3B2TXDmBGCtn8r4PLfehh61S6nLQDASNXSk200PmniFM8PyOUNVGVJqWpYQAEMn32WWdy4vTK2c8CsjwfsMhgnOI2YDCzw+jiP+8EfIGBsPO4xA7yrzweP8gkzBtplb3LbaCiW83WfFo9+402yr0/0F9gfWi8qvuIw29XAS1XWhTY4itqGfkSPdOHQz/45ElpLkGlgreuRrih3tAgn9YLb/Uh/6McHfHkL74YwQU3p0NiZcoleWYM0CLpPzyrN8EsbmIT+L75nIVwXnh62Gx2jJWayj7ZzvyKtVKHtLb/LKRs4Dg0UEg65xX1EcBAkC5fn4KG1jQHvi/tdOx1Sfh3hO6OK+68q1R6cQQYy+uG84q8RUjpO6dzFcWpE1yMdbQ5XMKfTh56ZdhXJ803LD2gGeIgcMwJp6HK9tnf0vaPPI9kbr8fqJBUUkciUoqpYzFd5m0ZCUbJsMD0oPY19FSRtfCNQvCbmhYrLy1sQ5FeMzbF0bi2oaUv+JD/A5RKokNMrrwv3nnTtG4vN1hJklQk2VW3sZWl6UjYgzhrbmKABtvPuB+xcYywIu4+JSworpfDwM/PZAKOfd6n+r8OdNV256l8WaNeF6osvXkUR7yxYpytywdQPA0d/z8mxTVoATE3wat7pnmTrqI5fqw=\n"
