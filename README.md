@@ -107,7 +107,7 @@ puts record.city.name # Minneapolis
 
 puts record.postal.code # 55455
 
-puts record.location.accuracy_Radius # 50
+puts record.location.accuracy_radius # 50
 puts record.location.latitude # 44.9733
 puts record.location.longitude # -93.2323
 
