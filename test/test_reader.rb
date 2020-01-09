@@ -144,10 +144,6 @@ class ReaderTest < Minitest::Test # :nodoc:
     assert_equal('United States', record.represented_country.name)
     assert_equal('military', record.represented_country.type)
 
-    record = reader.country('74.209.24.0')
-    assert_equal(true, record.traits.anonymous_proxy?)
-    assert_equal(true, record.traits.satellite_provider?)
-
     record = reader.country('81.2.69.163')
     assert_equal('81.2.69.163', record.traits.ip_address)
     assert_equal('81.2.69.160/27', record.traits.network)

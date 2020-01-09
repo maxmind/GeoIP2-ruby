@@ -69,13 +69,6 @@ module MaxMind::GeoIP2::Record
       get('is_anonymous')
     end
 
-    # *Deprecated.* Please see our GeoIP2 Anonymous IP database
-    # (https://www.maxmind.com/en/geoip2-anonymous-ip-database) to determine
-    # whether the IP address is used by an anonymizing service. Boolean.
-    def anonymous_proxy?
-      get('is_anonymous_proxy')
-    end
-
     # This is true if the IP address is registered to an anonymous VPN
     # provider. If a VPN provider does not register subnets under names
     # associated with them, we will likely only flag their IP ranges using the
@@ -103,14 +96,6 @@ module MaxMind::GeoIP2::Record
     # is only available from GeoIP2 Precision Insights. Boolean.
     def public_proxy?
       get('is_public_proxy')
-    end
-
-    # *Deprecated.* Due to the increased coverage by mobile carriers, very few
-    # satellite providers now serve multiple countries. As a result, the output
-    # does not provide sufficiently relevant data for us to maintain it.
-    # Boolean.
-    def satellite_provider?
-      get('is_satellite_provider')
     end
 
     # This is true if the IP address is a Tor exit node. This property is only

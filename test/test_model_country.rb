@@ -66,9 +66,6 @@ class CountryModelTest < Minitest::Test # :nodoc:
     assert_equal('DE', model.registered_country.iso_code)
     assert_equal({ 'en' => 'Germany' }, model.registered_country.names)
     assert_equal('Germany', model.registered_country.name)
-
-    assert_equal(false, model.traits.anonymous_proxy?)
-    assert_equal(false, model.traits.satellite_provider?)
   end
 
   def test_unknown_record
