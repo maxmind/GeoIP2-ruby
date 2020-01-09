@@ -1,0 +1,36 @@
+require: rubocop-performance
+
+AllCops:
+    TargetRubyVersion: 2.4
+
+# Metrics are too arbitrary.
+Metrics/AbcSize:
+    Enabled: false
+Metrics/ClassLength:
+    Enabled: false
+Layout/LineLength:
+    Enabled: false
+Metrics/MethodLength:
+    Enabled: false
+
+# Weird.
+Style/FormatStringToken:
+    Enabled: false
+Style/NumericPredicate:
+    Enabled: false
+
+# Trailing commas are good.
+Style/TrailingCommaInArguments:
+    Enabled: false
+Style/TrailingCommaInArrayLiteral:
+    Enabled: false
+Style/TrailingCommaInHashLiteral:
+    Enabled: false
+
+# Use unless as much as possible? I disagree!
+Style/NegatedIf:
+    Enabled: false
+
+# This reduces indentation.
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
