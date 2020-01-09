@@ -10,8 +10,8 @@ module MaxMind::GeoIP2::Record
       @locales = locales
     end
 
-    # Returns a string containing the first available localized name in order
-    # of preference.
+    # A string containing the first available localized name in order of
+    # preference.
     def name
       n = names
       return nil if n.nil?

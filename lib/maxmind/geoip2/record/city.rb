@@ -23,9 +23,9 @@ module MaxMind::GeoIP2::Record
       get('geoname_id')
     end
 
-    # Returns a Hash where the keys are locale codes (Strings) and the values
-    # are names (Strings). This attribute is returned by all location services
-    # and databases. Hash but may be nil.
+    # A Hash where the keys are locale codes (Strings) and the values are names
+    # (Strings). This attribute is returned by all location services and
+    # databases. Hash but may be nil.
     def names
       get('names')
     end
