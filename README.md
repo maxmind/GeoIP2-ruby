@@ -138,9 +138,6 @@ which can be populated vary between end points. In addition, while an end
 point may offer a particular piece of data, MaxMind does not always have
 every piece of data for any given IP address.
 
-Because of these factors, it is possible for any end point to return a
-record where some or all of the attributes are unpopulated.
-
 See the [GeoIP2 Precision web service
 docs](https://dev.maxmind.com/geoip/geoip2/web-services) for details on
 what data each end point may return.
