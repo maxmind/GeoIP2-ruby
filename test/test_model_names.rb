@@ -3,7 +3,7 @@
 require 'maxmind/geoip2'
 require 'minitest/autorun'
 
-class ModelNameTest < Minitest::Test # :nodoc:
+class ModelNameTest < Minitest::Test
   RAW = {
     'continent' => {
       'code' => 'NA',

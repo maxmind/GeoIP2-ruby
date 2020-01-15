@@ -7,24 +7,29 @@ module MaxMind::GeoIP2::Record
   #
   # This record is returned by all location services and databases.
   #
-  # See Place for inherited methods.
+  # See {MaxMind::GeoIP2::Record::Place} for inherited methods.
   class Continent < Place
     # A two character continent code like "NA" (North America) or "OC"
     # (Oceania). This attribute is returned by all location services and
-    # databases. String but may be nil.
+    # databases.
+    #
+    # @return [String, nil]
     def code
       get('code')
     end
 
     # The GeoName ID for the continent. This attribute is returned by all
-    # location services and databases. String but may be nil.
+    # location services and databases.
+    #
+    # @return [String, nil]
     def geoname_id
       get('geoname_id')
     end
 
-    # A Hash where the keys are locale codes (Strings) and the values are names
-    # (Strings). This attribute is returned by all location services and
-    # databases. Hash but may be nil.
+    # A Hash where the keys are locale codes and the values are names. This
+    # attribute is returned by all location services and databases.
+    #
+    # @return [Hash<String, String>, nil]
     def names
       get('names')
     end

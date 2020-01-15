@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 module MaxMind::GeoIP2::Record
-  class Abstract # :nodoc:
+  # @!visibility private
+  class Abstract
     def initialize(record)
       @record = record
     end

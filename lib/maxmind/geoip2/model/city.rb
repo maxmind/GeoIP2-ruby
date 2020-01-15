@@ -14,26 +14,37 @@ module MaxMind::GeoIP2::Model
   # fields in each record may be populated. See
   # https://dev.maxmind.com/geoip/geoip2/web-services for more details.
   #
-  # See Country for inherited methods.
+  # See {MaxMind::GeoIP2::Model::Country} for inherited methods.
   class City < Country
-    # City data for the IP address. See MaxMind::GeoIP2::Record::City.
+    # City data for the IP address.
+    #
+    # @return [MaxMind::GeoIP2::Record::City]
     attr_reader :city
 
-    # Location data for the IP address. See MaxMind::GeoIP2::Record::Location.
+    # Location data for the IP address.
+    #
+    # @return [MaxMind::GeoIP2::Record::Location]
     attr_reader :location
 
-    # Postal data for the IP address. See MaxMind::GeoIP2::Record::Postal.
+    # Postal data for the IP address.
+    #
+    # @return [MaxMind::GeoIP2::Record::Postal]
     attr_reader :postal
 
-    # An array of MaxMind::GeoIP2::Record::Subdivision objects representing the
-    # country subdivisions for the IP address. The number and type of
-    # subdivisions varies by country, but a subdivision is typically a state,
-    # province, country, etc. Subdivisions are ordered from most general
-    # (largest) to most specific (smallest). If the response did not contain
-    # any subdivisions, this attribute will be an empty array.
+    # The country subdivisions for the IP address.
+    #
+    # The number and type of subdivisions varies by country, but a subdivision
+    # is typically a state, province, country, etc. Subdivisions are ordered
+    # from most general (largest) to most specific (smallest).
+    #
+    # If the response did not contain any subdivisions, this attribute will be
+    # an empty array.
+    #
+    # @return [Array<MaxMind::GeoIP2::Record::Subdivision>]
     attr_reader :subdivisions
 
-    def initialize(record, locales) # :nodoc:
+    # @!visibility private
+    def initialize(record, locales)
       super(record, locales)
       @city = MaxMind::GeoIP2::Record::City.new(record['city'], locales)
       @location = MaxMind::GeoIP2::Record::Location.new(record['location'])
@@ -41,8 +52,12 @@ module MaxMind::GeoIP2::Model
       @subdivisions = create_subdivisions(record['subdivisions'], locales)
     end
 
-    # Return an object representing the most specific subdivision returned. If
-    # the response did not contain any subdivisions, this method returns nil.
+    # The most specific subdivision returned.
+    #
+    # If the response did not contain any subdivisions, this method returns
+    # nil.
+    #
+    # @return [MaxMind::GeoIP2::Record::Subdivision, nil]
     def most_specific_subdivision
       @subdivisions.last
     end

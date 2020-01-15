@@ -8,7 +8,8 @@ module MaxMind::GeoIP2::Record
   #
   # This record is returned by all location services and databases.
   class Traits < Abstract
-    def initialize(record) # :nodoc:
+    # @!visibility private
+    def initialize(record)
       super(record)
       if !record.key?('network') && record.key?('ip_address') &&
          record.key?('prefix_length')
@@ -24,7 +25,9 @@ module MaxMind::GeoIP2::Record
     # The autonomous system number associated with the IP address. See
     # Wikipedia[https://en.wikipedia.org/wiki/Autonomous_system_(Internet)].
     # This attribute is only available from the City and Insights web service
-    # and the GeoIP2 Enterprise database. Integer but may be nil.
+    # and the GeoIP2 Enterprise database.
+    #
+    # @return [Integer, nil]
     def autonomous_system_number
       get('autonomous_system_number')
     end
@@ -33,7 +36,9 @@ module MaxMind::GeoIP2::Record
     # for the IP address. See
     # Wikipedia[https://en.wikipedia.org/wiki/Autonomous_system_(Internet)].
     # This attribute is only available from the City and Insights web service
-    # and the GeoIP2 Enterprise database. String but may be nil.
+    # and the GeoIP2 Enterprise database.
+    #
+    # @return [String, nil]
     def autonomous_system_organization
       get('autonomous_system_organization')
     end
@@ -41,7 +46,9 @@ module MaxMind::GeoIP2::Record
     # The connection type may take the following  values: "Dialup",
     # "Cable/DSL", "Corporate", "Cellular". Additional values may be added in
     # the future. This attribute is only available in the GeoIP2 Enterprise
-    # database. String but may be nil.
+    # database.
+    #
+    # @return [String, nil]
     def connection_type
       get('connection_type')
     end
@@ -49,7 +56,9 @@ module MaxMind::GeoIP2::Record
     # The second level domain associated with the IP address. This will be
     # something like "example.com" or "example.co.uk", not "foo.example.com".
     # This attribute is only available from the City and Insights web service
-    # and the GeoIP2 Enterprise database. String but may be nil.
+    # and the GeoIP2 Enterprise database.
+    #
+    # @return [String, nil]
     def domain
       get('domain')
     end
@@ -58,13 +67,17 @@ module MaxMind::GeoIP2::Record
     # lookup against the web service, this will be the externally routable IP
     # address for the system the code is running on. If the system is behind a
     # NAT, this may differ from the IP address locally assigned to it. This
-    # attribute is returned by all end points. String.
+    # attribute is returned by all end points.
+    #
+    # @return [String]
     def ip_address
       get('ip_address')
     end
 
     # This is true if the IP address belongs to any sort of anonymous network.
-    # This property is only available from GeoIP2 Precision Insights. Boolean.
+    # This property is only available from GeoIP2 Precision Insights.
+    #
+    # @return [Boolean]
     def anonymous?
       get('is_anonymous')
     end
@@ -73,60 +86,78 @@ module MaxMind::GeoIP2::Record
     # provider. If a VPN provider does not register subnets under names
     # associated with them, we will likely only flag their IP ranges using the
     # hosting_provider? property. This property is only available from GeoIP2
-    # Precision Insights. Boolean.
+    # Precision Insights.
+    #
+    # @return [Boolean]
     def anonymous_vpn?
       get('is_anonymous_vpn')
     end
 
     # This is true if the IP address belongs to a hosting or VPN provider (see
     # description of the anonymous_vpn? property). This property is only
-    # available from GeoIP2 Precision Insights. Boolean.
+    # available from GeoIP2 Precision Insights.
+    #
+    # @return [Boolean]
     def hosting_provider?
       get('is_hosting_provider')
     end
 
     # This attribute is true if MaxMind believes this IP address to be a
     # legitimate proxy, such as an internal VPN used by a corporation. This
-    # attribute is only available in the GeoIP2 Enterprise database. Boolean.
+    # attribute is only available in the GeoIP2 Enterprise database.
+    #
+    # @return [Boolean]
     def legitimate_proxy?
       get('is_legitimate_proxy')
     end
 
     # This is true if the IP address belongs to a public proxy. This property
-    # is only available from GeoIP2 Precision Insights. Boolean.
+    # is only available from GeoIP2 Precision Insights.
+    #
+    # @return [Boolean]
     def public_proxy?
       get('is_public_proxy')
     end
 
     # This is true if the IP address is a Tor exit node. This property is only
-    # available from GeoIP2 Precision Insights. Boolean.
+    # available from GeoIP2 Precision Insights.
+    #
+    # @return [Boolean]
     def tor_exit_node?
       get('is_tor_exit_node')
     end
 
     # The name of the ISP associated with the IP address. This attribute is
     # only available from the City and Insights web services and the GeoIP2
-    # Enterprise database. String but may be nil.
+    # Enterprise database.
+    #
+    # @return [String, nil]
     def isp
       get('isp')
     end
 
     # The network in CIDR notation associated with the record. In particular,
     # this is the largest network where all of the fields besides ip_address
-    # have the same value. String.
+    # have the same value.
+    #
+    # @return [String]
     def network
       get('network')
     end
 
     # The name of the organization associated with the IP address. This
     # attribute is only available from the City and Insights web services and
-    # the GeoIP2 Enterprise database. String but may be nil.
+    # the GeoIP2 Enterprise database.
+    #
+    # @return [String, nil]
     def organization
       get('organization')
     end
 
     # An indicator of how static or dynamic an IP address is. This property is
-    # only available from GeoIP2 Precision Insights. Float but may be nil.
+    # only available from GeoIP2 Precision Insights.
+    #
+    # @return [Float, nil]
     def static_ip_score
       get('static_ip_score')
     end
@@ -134,7 +165,9 @@ module MaxMind::GeoIP2::Record
     # The estimated number of users sharing the IP/network during the past 24
     # hours. For IPv4, the count is for the individual IP. For IPv6, the count
     # is for the /64 network. This property is only available from GeoIP2
-    # Precision Insights. Integer but may be nil.
+    # Precision Insights.
+    #
+    # @return [Integer, nil]
     def user_count
       get('user_count')
     end
@@ -161,7 +194,7 @@ module MaxMind::GeoIP2::Record
     # This attribute is only available from the Insights web service and the
     # GeoIP2 Enterprise database.
     #
-    # May be nil.
+    # @return [String, nil]
     def user_type
       get('user_type')
     end
