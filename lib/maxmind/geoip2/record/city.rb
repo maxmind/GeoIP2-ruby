@@ -8,24 +8,29 @@ module MaxMind::GeoIP2::Record
   # This record is returned by all location services and databases besides
   # Country.
   #
-  # See Place for inherited methods.
+  # See {MaxMind::GeoIP2::Record::Place} for inherited methods.
   class City < Place
     # A value from 0-100 indicating MaxMind's confidence that the city is
     # correct. This attribute is only available from the Insights service and
-    # the GeoIP2 Enterprise database. Integer but may be nil.
+    # the GeoIP2 Enterprise database.
+    #
+    # @return [Integer, nil]
     def confidence
       get('confidence')
     end
 
     # The GeoName ID for the city. This attribute is returned by all location
-    # services and databases. Integer but may be nil.
+    # services and databases.
+    #
+    # @return [Integer, nil]
     def geoname_id
       get('geoname_id')
     end
 
-    # A Hash where the keys are locale codes (Strings) and the values are names
-    # (Strings). This attribute is returned by all location services and
-    # databases. Hash but may be nil.
+    # A Hash where the keys are locale codes and the values are names. This
+    # attribute is returned by all location services and databases.
+    #
+    # @return [Hash<String, String>, nil]
     def names
       get('names')
     end

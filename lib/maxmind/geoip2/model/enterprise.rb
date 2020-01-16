@@ -9,7 +9,7 @@ module MaxMind::GeoIP2::Model
   # fields in each record may be populated. See
   # https://dev.maxmind.com/geoip/geoip2/web-services for more details.
   #
-  # See City for inherited methods.
+  # See {MaxMind::GeoIP2::Model::City} for inherited methods.
   class Enterprise < City
   end
 end

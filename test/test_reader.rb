@@ -4,7 +4,7 @@ require 'ipaddr'
 require 'maxmind/geoip2'
 require 'minitest/autorun'
 
-class ReaderTest < Minitest::Test # :nodoc:
+class ReaderTest < Minitest::Test
   def test_city
     reader = MaxMind::GeoIP2::Reader.new(
       'test/data/test-data/GeoIP2-City-Test.mmdb',
