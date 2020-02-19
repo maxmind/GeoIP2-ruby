@@ -141,6 +141,19 @@ puts record.autonomous_system_number # 1234
 puts record.autonomous_system_organization # Example Ltd
 ```
 
+### Connection Type Example
+
+```ruby
+require 'maxmind/geoip2'
+
+# This creates the Reader object which should be reused across lookups.
+reader = MaxMind::GeoIP2::Reader.new('/usr/share/GeoIP/GeoIP2-Connection-Type.mmdb')
+
+record = reader.asn('128.101.101.101')
+
+puts record.connection_type # Cable/DSL
+```
+
 ## Values to use for Database or Array Keys
 
 **We strongly discourage you from using a value from any `names` property

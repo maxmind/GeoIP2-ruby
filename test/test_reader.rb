@@ -98,6 +98,20 @@ class ReaderTest < Minitest::Test
     reader.close
   end
 
+  def test_connection_type
+    reader = MaxMind::GeoIP2::Reader.new(
+      'test/data/test-data/GeoIP2-Connection-Type-Test.mmdb',
+    )
+    ip = '1.0.1.1'
+    record = reader.connection_type(ip)
+
+    assert_equal('Cable/DSL', record.connection_type)
+    assert_equal(ip, record.ip_address)
+    assert_equal('1.0.1.0/24', record.network)
+
+    reader.close
+  end
+
   def test_country
     reader = MaxMind::GeoIP2::Reader.new(
       'test/data/test-data/GeoIP2-Country-Test.mmdb',
