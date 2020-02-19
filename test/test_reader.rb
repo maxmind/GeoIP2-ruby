@@ -255,6 +255,23 @@ class ReaderTest < Minitest::Test
     reader.close
   end
 
+  def test_isp
+    reader = MaxMind::GeoIP2::Reader.new(
+      'test/data/test-data/GeoIP2-ISP-Test.mmdb',
+    )
+    ip = '1.128.1.1'
+    record = reader.isp(ip)
+
+    assert_equal(1221, record.autonomous_system_number)
+    assert_equal('Telstra Pty Ltd', record.autonomous_system_organization)
+    assert_equal('Telstra Internet', record.isp)
+    assert_equal('Telstra Internet', record.organization)
+    assert_equal(ip, record.ip_address)
+    assert_equal('1.128.0.0/11', record.network)
+
+    reader.close
+  end
+
   def test_no_traits
     reader = MaxMind::GeoIP2::Reader.new(
       'test/data/test-data/GeoIP2-Enterprise-Test.mmdb',

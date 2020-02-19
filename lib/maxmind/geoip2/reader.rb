@@ -9,6 +9,7 @@ require 'maxmind/geoip2/model/connection_type'
 require 'maxmind/geoip2/model/country'
 require 'maxmind/geoip2/model/domain'
 require 'maxmind/geoip2/model/enterprise'
+require 'maxmind/geoip2/model/isp'
 
 module MaxMind::GeoIP2
   # Reader is a reader for the GeoIP2/GeoLite2 database format. IP addresses
@@ -201,6 +202,25 @@ module MaxMind::GeoIP2
     #   corrupt.
     def enterprise(ip_address)
       model_for(Model::Enterprise, 'enterprise', 'Enterprise', ip_address)
+    end
+
+    # Look up the IP address in the database.
+    #
+    # @param ip_address [String] a string in the standard notation. It may be
+    #   IPv4 or IPv6.
+    #
+    # @return [MaxMind::GeoIP2::Model::ISP]
+    #
+    # @raise [ArgumentError] if used against a non-ISP database or if you
+    #   attempt to look up an IPv6 address in an IPv4 only database.
+    #
+    # @raise [AddressNotFoundError] if the IP address is not found in the
+    #   database.
+    #
+    # @raise [MaxMind::DB::InvalidDatabaseError] if the database appears
+    #   corrupt.
+    def isp(ip_address)
+      flat_model_for(Model::ISP, 'isp', 'GeoIP2-ISP', ip_address)
     end
 
     # Return the metadata associated with the database.
