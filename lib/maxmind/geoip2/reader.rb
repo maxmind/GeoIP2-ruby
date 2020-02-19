@@ -3,6 +3,7 @@
 require 'maxmind/db'
 require 'maxmind/geoip2/errors'
 require 'maxmind/geoip2/model/anonymous_ip'
+require 'maxmind/geoip2/model/asn'
 require 'maxmind/geoip2/model/city'
 require 'maxmind/geoip2/model/country'
 require 'maxmind/geoip2/model/enterprise'
@@ -79,6 +80,25 @@ module MaxMind::GeoIP2
         'GeoIP2-Anonymous-IP',
         ip_address,
       )
+    end
+
+    # Look up the IP address in the database.
+    #
+    # @param ip_address [String] a string in the standard notation. It may be
+    #   IPv4 or IPv6.
+    #
+    # @return [MaxMind::GeoIP2::Model::ASN]
+    #
+    # @raise [ArgumentError] if used against a non-ASN database or if you
+    #   attempt to look up an IPv6 address in an IPv4 only database.
+    #
+    # @raise [AddressNotFoundError] if the IP address is not found in the
+    #   database.
+    #
+    # @raise [MaxMind::DB::InvalidDatabaseError] if the database appears
+    #   corrupt.
+    def asn(ip_address)
+      flat_model_for(Model::ASN, 'asn', 'GeoLite2-ASN', ip_address)
     end
 
     # Look up the IP address in the database.

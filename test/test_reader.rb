@@ -23,6 +23,21 @@ class ReaderTest < Minitest::Test
     reader.close
   end
 
+  def test_asn
+    reader = MaxMind::GeoIP2::Reader.new(
+      'test/data/test-data/GeoLite2-ASN-Test.mmdb',
+    )
+    ip = '1.128.0.1'
+    record = reader.asn(ip)
+
+    assert_equal(1221, record.autonomous_system_number)
+    assert_equal('Telstra Pty Ltd', record.autonomous_system_organization)
+    assert_equal(ip, record.ip_address)
+    assert_equal('1.128.0.0/11', record.network)
+
+    reader.close
+  end
+
   def test_city
     reader = MaxMind::GeoIP2::Reader.new(
       'test/data/test-data/GeoIP2-City-Test.mmdb',
