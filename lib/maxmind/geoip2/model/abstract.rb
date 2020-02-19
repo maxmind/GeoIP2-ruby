@@ -8,9 +8,7 @@ module MaxMind::GeoIP2::Model
     def initialize(record)
       @record = record
 
-      ip = IPAddr.new(
-        format('%s/%d', record['ip_address'], record['prefix_length']),
-      )
+      ip = IPAddr.new(record['ip_address']).mask(record['prefix_length'])
       record['network'] = format('%s/%d', ip.to_s, record['prefix_length'])
     end
 
