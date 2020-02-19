@@ -34,3 +34,12 @@ Style/NegatedIf:
 # This reduces indentation.
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
+
+# These are new and rubocop warns if you don't configure them.
+Style/HashEachMethods:
+    Enabled: true
+# This should only be enabled when we are on Ruby 2.5+.
+Style/HashTransformKeys:
+    Enabled: false
+Style/HashTransformValues:
+    Enabled: true
