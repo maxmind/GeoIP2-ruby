@@ -209,6 +209,20 @@ class ReaderTest < Minitest::Test
     reader.close
   end
 
+  def test_domain
+    reader = MaxMind::GeoIP2::Reader.new(
+      'test/data/test-data/GeoIP2-Domain-Test.mmdb',
+    )
+    ip = '1.2.0.1'
+    record = reader.domain(ip)
+
+    assert_equal('maxmind.com', record.domain)
+    assert_equal(ip, record.ip_address)
+    assert_equal('1.2.0.0/16', record.network)
+
+    reader.close
+  end
+
   def test_enterprise
     reader = MaxMind::GeoIP2::Reader.new(
       'test/data/test-data/GeoIP2-Enterprise-Test.mmdb',

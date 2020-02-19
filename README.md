@@ -154,6 +154,19 @@ record = reader.asn('128.101.101.101')
 puts record.connection_type # Cable/DSL
 ```
 
+### Domain Example
+
+```ruby
+require 'maxmind/geoip2'
+
+# This creates the Reader object which should be reused across lookups.
+reader = MaxMind::GeoIP2::Reader.new('/usr/share/GeoIP/GeoIP2-Domain.mmdb')
+
+record = reader.asn('128.101.101.101')
+
+puts record.domain # example.com
+```
+
 ## Values to use for Database or Array Keys
 
 **We strongly discourage you from using a value from any `names` property
