@@ -149,7 +149,7 @@ require 'maxmind/geoip2'
 # This creates the Reader object which should be reused across lookups.
 reader = MaxMind::GeoIP2::Reader.new('/usr/share/GeoIP/GeoIP2-Connection-Type.mmdb')
 
-record = reader.asn('128.101.101.101')
+record = reader.connection_type('128.101.101.101')
 
 puts record.connection_type # Cable/DSL
 ```
@@ -162,7 +162,7 @@ require 'maxmind/geoip2'
 # This creates the Reader object which should be reused across lookups.
 reader = MaxMind::GeoIP2::Reader.new('/usr/share/GeoIP/GeoIP2-Domain.mmdb')
 
-record = reader.asn('128.101.101.101')
+record = reader.domain('128.101.101.101')
 
 puts record.domain # example.com
 ```
