@@ -85,7 +85,7 @@ module MaxMind::GeoIP2
       )
     end
 
-    # Look up the IP address in the database.
+    # Look up the IP address in an ASN database.
     #
     # @param ip_address [String] a string in the standard notation. It may be
     #   IPv4 or IPv6.
@@ -104,7 +104,7 @@ module MaxMind::GeoIP2
       flat_model_for(Model::ASN, 'asn', 'GeoLite2-ASN', ip_address)
     end
 
-    # Look up the IP address in the database.
+    # Look up the IP address in a City database.
     #
     # @param ip_address [String] a string in the standard notation. It may be
     #   IPv4 or IPv6.
@@ -123,7 +123,7 @@ module MaxMind::GeoIP2
       model_for(Model::City, 'city', 'City', ip_address)
     end
 
-    # Look up the IP address in the database.
+    # Look up the IP address in a Connection Type database.
     #
     # @param ip_address [String] a string in the standard notation. It may be
     #   IPv4 or IPv6.
@@ -147,7 +147,7 @@ module MaxMind::GeoIP2
       )
     end
 
-    # Look up the IP address in the database.
+    # Look up the IP address in a Country database.
     #
     # @param ip_address [String] a string in the standard notation. It may be
     #   IPv4 or IPv6.
@@ -166,7 +166,7 @@ module MaxMind::GeoIP2
       model_for(Model::Country, 'country', 'Country', ip_address)
     end
 
-    # Look up the IP address in the database.
+    # Look up the IP address in a Domain database.
     #
     # @param ip_address [String] a string in the standard notation. It may be
     #   IPv4 or IPv6.
@@ -185,7 +185,7 @@ module MaxMind::GeoIP2
       flat_model_for(Model::Domain, 'domain', 'GeoIP2-Domain', ip_address)
     end
 
-    # Look up the IP address in the database.
+    # Look up the IP address in an Enterprise database.
     #
     # @param ip_address [String] a string in the standard notation. It may be
     #   IPv4 or IPv6.
@@ -204,7 +204,7 @@ module MaxMind::GeoIP2
       model_for(Model::Enterprise, 'enterprise', 'Enterprise', ip_address)
     end
 
-    # Look up the IP address in the database.
+    # Look up the IP address in an ISP database.
     #
     # @param ip_address [String] a string in the standard notation. It may be
     #   IPv4 or IPv6.
