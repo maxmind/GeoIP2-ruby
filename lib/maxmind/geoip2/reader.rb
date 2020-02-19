@@ -2,9 +2,14 @@
 
 require 'maxmind/db'
 require 'maxmind/geoip2/errors'
+require 'maxmind/geoip2/model/anonymous_ip'
+require 'maxmind/geoip2/model/asn'
 require 'maxmind/geoip2/model/city'
+require 'maxmind/geoip2/model/connection_type'
 require 'maxmind/geoip2/model/country'
+require 'maxmind/geoip2/model/domain'
 require 'maxmind/geoip2/model/enterprise'
+require 'maxmind/geoip2/model/isp'
 
 module MaxMind::GeoIP2
   # Reader is a reader for the GeoIP2/GeoLite2 database format. IP addresses
@@ -61,6 +66,49 @@ module MaxMind::GeoIP2
     # @param ip_address [String] a string in the standard notation. It may be
     #   IPv4 or IPv6.
     #
+    # @return [MaxMind::GeoIP2::Model::AnonymousIP]
+    #
+    # @raise [ArgumentError] if used against a non-Anonymous IP database or if
+    #   you attempt to look up an IPv6 address in an IPv4 only database.
+    #
+    # @raise [AddressNotFoundError] if the IP address is not found in the
+    #   database.
+    #
+    # @raise [MaxMind::DB::InvalidDatabaseError] if the database appears
+    #   corrupt.
+    def anonymous_ip(ip_address)
+      flat_model_for(
+        Model::AnonymousIP,
+        'anonymous_ip',
+        'GeoIP2-Anonymous-IP',
+        ip_address,
+      )
+    end
+
+    # Look up the IP address in an ASN database.
+    #
+    # @param ip_address [String] a string in the standard notation. It may be
+    #   IPv4 or IPv6.
+    #
+    # @return [MaxMind::GeoIP2::Model::ASN]
+    #
+    # @raise [ArgumentError] if used against a non-ASN database or if you
+    #   attempt to look up an IPv6 address in an IPv4 only database.
+    #
+    # @raise [AddressNotFoundError] if the IP address is not found in the
+    #   database.
+    #
+    # @raise [MaxMind::DB::InvalidDatabaseError] if the database appears
+    #   corrupt.
+    def asn(ip_address)
+      flat_model_for(Model::ASN, 'asn', 'GeoLite2-ASN', ip_address)
+    end
+
+    # Look up the IP address in a City database.
+    #
+    # @param ip_address [String] a string in the standard notation. It may be
+    #   IPv4 or IPv6.
+    #
     # @return [MaxMind::GeoIP2::Model::City]
     #
     # @raise [ArgumentError] if used against a non-City database or if you
@@ -75,7 +123,31 @@ module MaxMind::GeoIP2
       model_for(Model::City, 'city', 'City', ip_address)
     end
 
-    # Look up the IP address in the database.
+    # Look up the IP address in a Connection Type database.
+    #
+    # @param ip_address [String] a string in the standard notation. It may be
+    #   IPv4 or IPv6.
+    #
+    # @return [MaxMind::GeoIP2::Model::ConnectionType]
+    #
+    # @raise [ArgumentError] if used against a non-Connection Type database or if
+    #   you attempt to look up an IPv6 address in an IPv4 only database.
+    #
+    # @raise [AddressNotFoundError] if the IP address is not found in the
+    #   database.
+    #
+    # @raise [MaxMind::DB::InvalidDatabaseError] if the database appears
+    #   corrupt.
+    def connection_type(ip_address)
+      flat_model_for(
+        Model::ConnectionType,
+        'connection_type',
+        'GeoIP2-Connection-Type',
+        ip_address,
+      )
+    end
+
+    # Look up the IP address in a Country database.
     #
     # @param ip_address [String] a string in the standard notation. It may be
     #   IPv4 or IPv6.
@@ -94,7 +166,26 @@ module MaxMind::GeoIP2
       model_for(Model::Country, 'country', 'Country', ip_address)
     end
 
-    # Look up the IP address in the database.
+    # Look up the IP address in a Domain database.
+    #
+    # @param ip_address [String] a string in the standard notation. It may be
+    #   IPv4 or IPv6.
+    #
+    # @return [MaxMind::GeoIP2::Model::Domain]
+    #
+    # @raise [ArgumentError] if used against a non-Domain database or if you
+    #   attempt to look up an IPv6 address in an IPv4 only database.
+    #
+    # @raise [AddressNotFoundError] if the IP address is not found in the
+    #   database.
+    #
+    # @raise [MaxMind::DB::InvalidDatabaseError] if the database appears
+    #   corrupt.
+    def domain(ip_address)
+      flat_model_for(Model::Domain, 'domain', 'GeoIP2-Domain', ip_address)
+    end
+
+    # Look up the IP address in an Enterprise database.
     #
     # @param ip_address [String] a string in the standard notation. It may be
     #   IPv4 or IPv6.
@@ -111,6 +202,25 @@ module MaxMind::GeoIP2
     #   corrupt.
     def enterprise(ip_address)
       model_for(Model::Enterprise, 'enterprise', 'Enterprise', ip_address)
+    end
+
+    # Look up the IP address in an ISP database.
+    #
+    # @param ip_address [String] a string in the standard notation. It may be
+    #   IPv4 or IPv6.
+    #
+    # @return [MaxMind::GeoIP2::Model::ISP]
+    #
+    # @raise [ArgumentError] if used against a non-ISP database or if you
+    #   attempt to look up an IPv6 address in an IPv4 only database.
+    #
+    # @raise [AddressNotFoundError] if the IP address is not found in the
+    #   database.
+    #
+    # @raise [MaxMind::DB::InvalidDatabaseError] if the database appears
+    #   corrupt.
+    def isp(ip_address)
+      flat_model_for(Model::ISP, 'isp', 'GeoIP2-ISP', ip_address)
     end
 
     # Return the metadata associated with the database.
@@ -130,6 +240,16 @@ module MaxMind::GeoIP2
     private
 
     def model_for(model_class, method, type, ip_address)
+      record, prefix_length = get_record(method, type, ip_address)
+
+      record['traits'] = {} if !record.key?('traits')
+      record['traits']['ip_address'] = ip_address
+      record['traits']['prefix_length'] = prefix_length
+
+      model_class.new(record, @locales)
+    end
+
+    def get_record(method, type, ip_address)
       if !@type.include?(type)
         raise ArgumentError,
               "The #{method} method cannot be used with the #{@type} database."
@@ -142,11 +262,16 @@ module MaxMind::GeoIP2
               "The address #{ip_address} is not in the database."
       end
 
-      record['traits'] = {} if !record.key?('traits')
-      record['traits']['ip_address'] = ip_address
-      record['traits']['prefix_length'] = prefix_length
+      [record, prefix_length]
+    end
 
-      model_class.new(record, @locales)
+    def flat_model_for(model_class, method, type, ip_address)
+      record, prefix_length = get_record(method, type, ip_address)
+
+      record['ip_address'] = ip_address
+      record['prefix_length'] = prefix_length
+
+      model_class.new(record)
     end
   end
 end

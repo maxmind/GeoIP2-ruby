@@ -13,9 +13,7 @@ module MaxMind::GeoIP2::Record
       super(record)
       if !record.key?('network') && record.key?('ip_address') &&
          record.key?('prefix_length')
-        ip = IPAddr.new(
-          format('%s/%d', record['ip_address'], record['prefix_length']),
-        )
+        ip = IPAddr.new(record['ip_address']).mask(record['prefix_length'])
         # We could use ip.prefix instead of record['prefix_length'], but that
         # method only becomes available in Ruby 2.5+.
         record['network'] = format('%s/%d', ip.to_s, record['prefix_length'])
