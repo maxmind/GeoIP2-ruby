@@ -177,7 +177,7 @@ reader = MaxMind::GeoIP2::Reader.new('/usr/share/GeoIP/GeoIP2-ISP.mmdb')
 
 record = reader.isp('128.101.101.101')
 
-puts record.autonomous_system_umber # 217
+puts record.autonomous_system_number # 217
 puts record.autonomous_system_organization # University of Minnesota
 puts record.isp # University of Minnesota
 puts record.organization # University of Minnesota
