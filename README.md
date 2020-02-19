@@ -114,6 +114,19 @@ puts record.location.longitude # -93.2323
 puts record.traits.network # 128.101.101.101/32
 ```
 
+### Anonymous IP Example
+
+```ruby
+require 'maxmind/geoip2'
+
+# This creates the Reader object which should be reused across lookups.
+reader = MaxMind::GeoIP2::Reader.new('/usr/share/GeoIP/GeoIP2-Anonymous-IP.mmdb')
+
+record = reader.anonymous_ip('128.101.101.101')
+
+puts "Anonymous" if record.is_anonymous
+```
+
 ## Values to use for Database or Array Keys
 
 **We strongly discourage you from using a value from any `names` property

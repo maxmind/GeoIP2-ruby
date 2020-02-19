@@ -2,6 +2,7 @@
 
 require 'maxmind/db'
 require 'maxmind/geoip2/errors'
+require 'maxmind/geoip2/model/anonymous_ip'
 require 'maxmind/geoip2/model/city'
 require 'maxmind/geoip2/model/country'
 require 'maxmind/geoip2/model/enterprise'
@@ -54,6 +55,30 @@ module MaxMind::GeoIP2
       @type = @reader.metadata.database_type
       locales = ['en'] if locales.empty?
       @locales = locales
+    end
+
+    # Look up the IP address in the database.
+    #
+    # @param ip_address [String] a string in the standard notation. It may be
+    #   IPv4 or IPv6.
+    #
+    # @return [MaxMind::GeoIP2::Model::AnonymousIP]
+    #
+    # @raise [ArgumentError] if used against a non-Anonymous IP database or if
+    #   you attempt to look up an IPv6 address in an IPv4 only database.
+    #
+    # @raise [AddressNotFoundError] if the IP address is not found in the
+    #   database.
+    #
+    # @raise [MaxMind::DB::InvalidDatabaseError] if the database appears
+    #   corrupt.
+    def anonymous_ip(ip_address)
+      flat_model_for(
+        Model::AnonymousIP,
+        'anonymous_ip',
+        'GeoIP2-Anonymous-IP',
+        ip_address,
+      )
     end
 
     # Look up the IP address in the database.
@@ -130,6 +155,16 @@ module MaxMind::GeoIP2
     private
 
     def model_for(model_class, method, type, ip_address)
+      record, prefix_length = get_record(method, type, ip_address)
+
+      record['traits'] = {} if !record.key?('traits')
+      record['traits']['ip_address'] = ip_address
+      record['traits']['prefix_length'] = prefix_length
+
+      model_class.new(record, @locales)
+    end
+
+    def get_record(method, type, ip_address)
       if !@type.include?(type)
         raise ArgumentError,
               "The #{method} method cannot be used with the #{@type} database."
@@ -142,11 +177,16 @@ module MaxMind::GeoIP2
               "The address #{ip_address} is not in the database."
       end
 
-      record['traits'] = {} if !record.key?('traits')
-      record['traits']['ip_address'] = ip_address
-      record['traits']['prefix_length'] = prefix_length
+      [record, prefix_length]
+    end
 
-      model_class.new(record, @locales)
+    def flat_model_for(model_class, method, type, ip_address)
+      record, prefix_length = get_record(method, type, ip_address)
+
+      record['ip_address'] = ip_address
+      record['prefix_length'] = prefix_length
+
+      model_class.new(record)
     end
   end
 end

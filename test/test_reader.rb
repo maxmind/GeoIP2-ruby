@@ -5,6 +5,24 @@ require 'maxmind/geoip2'
 require 'minitest/autorun'
 
 class ReaderTest < Minitest::Test
+  def test_anonymous_ip
+    reader = MaxMind::GeoIP2::Reader.new(
+      'test/data/test-data/GeoIP2-Anonymous-IP-Test.mmdb',
+    )
+    ip = '1.2.0.1'
+    record = reader.anonymous_ip(ip)
+
+    assert_equal(true, record.anonymous?)
+    assert_equal(true, record.anonymous_vpn?)
+    assert_equal(false, record.hosting_provider?)
+    assert_equal(false, record.public_proxy?)
+    assert_equal(false, record.tor_exit_node?)
+    assert_equal(ip, record.ip_address)
+    assert_equal('1.2.0.0/16', record.network)
+
+    reader.close
+  end
+
   def test_city
     reader = MaxMind::GeoIP2::Reader.new(
       'test/data/test-data/GeoIP2-City-Test.mmdb',
