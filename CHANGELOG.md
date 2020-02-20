@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0
+## 0.1.0 (2020-02-20)
 
 * Added support for the Anonymous IP, ASN, Connection Type, Domain, and ISP
   databases.
