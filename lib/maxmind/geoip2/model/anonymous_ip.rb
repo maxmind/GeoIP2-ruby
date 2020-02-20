@@ -15,7 +15,7 @@ module MaxMind::GeoIP2::Model
     # This is true if the IP address is registered to an anonymous VPN
     # provider. If a VPN provider does not register subnets under names
     # associated with them, we will likely only flag their IP ranges using the
-    # is_hosting_provider attribute.
+    # hosting_provider? method.
     #
     # @return [Boolean]
     def anonymous_vpn?
@@ -23,7 +23,7 @@ module MaxMind::GeoIP2::Model
     end
 
     # This is true if the IP address belongs to a hosting or VPN provider (see
-    # description of the is_anonymous_vpn attribute).
+    # description of the anonymous_vpn? method).
     #
     # @return [Boolean]
     def hosting_provider?
