@@ -33,7 +33,11 @@ Style/NegatedIf:
 
 # This reduces indentation.
 Style/ClassAndModuleChildren:
-  EnforcedStyle: compact
+    EnforcedStyle: compact
+
+# This doesn't always make sense.
+Style/IfUnlessModifier:
+    Enabled: false
 
 # These are new and rubocop warns if you don't configure them.
 Style/HashEachMethods:
