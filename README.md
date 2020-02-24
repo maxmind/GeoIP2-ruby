@@ -210,8 +210,8 @@ require 'maxmind/geoip2'
 # Replace "42" with your account ID and "license_key" with your license
 # key.
 client = MaxMind::GeoIP2::Client.new(
-    account_id: 42,
-    license_key: 'license_key',
+  account_id: 42,
+  license_key: 'license_key',
 )
 
 # Replace "city" with the method corresponding to the web service that

@@ -42,8 +42,8 @@ module MaxMind::GeoIP2
   #   require 'maxmind/geoip2'
   #
   #   client = MaxMind::GeoIP2::Client.new(
-  #       account_id: 42,
-  #       license_key: 'abcdef123456',
+  #     account_id: 42,
+  #     license_key: 'abcdef123456',
   #   )
   #
   #   # Replace 'city' with the method corresponding to the web service you
