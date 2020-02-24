@@ -20,5 +20,6 @@ Gem::Specification.new do |s|
   }
   s.required_ruby_version = '>= 2.4.0'
 
+  s.add_runtime_dependency 'http', ['~> 4.3']
   s.add_runtime_dependency 'maxmind-db', ['~> 1.1']
 end

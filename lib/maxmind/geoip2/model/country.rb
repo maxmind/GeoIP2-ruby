@@ -2,6 +2,7 @@
 
 require 'maxmind/geoip2/record/continent'
 require 'maxmind/geoip2/record/country'
+require 'maxmind/geoip2/record/maxmind'
 require 'maxmind/geoip2/record/represented_country'
 require 'maxmind/geoip2/record/traits'
 
@@ -19,6 +20,11 @@ module MaxMind::GeoIP2::Model
     #
     # @return [MaxMind::GeoIP2::Record::Country]
     attr_reader :country
+
+    # Data related to your MaxMind account.
+    #
+    # @return [MaxMind::GeoIP2::Record::MaxMind]
+    attr_reader :maxmind
 
     # Registered country data for the IP address. This record represents the
     # country where the ISP has registered a given IP block and may differ from
@@ -49,6 +55,7 @@ module MaxMind::GeoIP2::Model
         record['country'],
         locales,
       )
+      @maxmind = MaxMind::GeoIP2::Record::MaxMind.new(record['maxmind'])
       @registered_country = MaxMind::GeoIP2::Record::Country.new(
         record['registered_country'],
         locales,

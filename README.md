@@ -183,6 +183,58 @@ puts record.isp # University of Minnesota
 puts record.organization # University of Minnesota
 ```
 
+## Web Service Client
+
+### Usage
+
+To use this API, you must create a new `MaxMind::GeoIP2::Client` object
+with your account ID and license key, then you call the method
+corresponding to a specific end point, passing it the IP address you want
+to look up.
+
+If the request succeeds, the method call will return a model class for the end
+point you called. This model in turn contains multiple record classes, each of
+which represents part of the data returned by the web service.
+
+If there is an error, a structured exception is thrown.
+
+See the [API documentation](https://www.rubydoc.info/gems/maxmind-geoip2)
+for more details.
+
+### Example
+
+```ruby
+require 'maxmind/geoip2'
+
+# This creates a Client object that can be reused across requests.
+# Replace "42" with your account ID and "license_key" with your license
+# key.
+client = MaxMind::GeoIP2::Client.new(
+  account_id: 42,
+  license_key: 'license_key',
+)
+
+# Replace "city" with the method corresponding to the web service that
+# you are using, e.g., "country", "insights".
+record = client.city('128.101.101.101')
+
+puts record.country.isoCode # US
+puts record.country.name # United States
+puts record.country.names['zh-CN'] # 美国
+
+puts record.most_specific_subdivision.name # Minnesota
+puts record.most_specific_subdivision.iso_code # MN
+
+puts record.city.name # Minneapolis
+
+puts record.postal.code # 55455
+
+puts record.location.latitude # 44.9733
+puts record.location.longitude # -93.2323
+
+puts record.traits.network # 128.101.101.101/32
+```
+
 ## Values to use for Database or Array Keys
 
 **We strongly discourage you from using a value from any `names` property
