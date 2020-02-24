@@ -251,9 +251,9 @@ class ClientTest < Minitest::Test
     )
   end
 
-  def test_out_of_queries_error
+  def test_insufficient_funds_error
     error = assert_raises(
-      MaxMind::GeoIP2::OutOfQueriesError,
+      MaxMind::GeoIP2::InsufficientFundsError,
     ) { request(:country, '1.2.3.18') }
 
     assert_equal(
@@ -403,7 +403,7 @@ class ClientTest < Minitest::Test
       },
       '1.2.3.18' => {
         body: JSON.generate({
-                              'code' => 'OUT_OF_QUERIES',
+                              'code' => 'INSUFFICIENT_FUNDS',
                               'error' => 'The license key you have provided is out of queries.',
                             }),
         headers: { 'Content-Type': CONTENT_TYPES[:country] },

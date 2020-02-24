@@ -125,7 +125,7 @@ module MaxMind::GeoIP2
     # @raise [AuthenticationError] if there was a problem authenticating to the
     #   web service, such as an invalid or missing license key.
     #
-    # @raise [OutOfQueriesError] if your account is out of credit.
+    # @raise [InsufficientFundsError] if your account is out of credit.
     #
     # @raise [PermissionRequiredError] if your account does not have permission
     #   to use the web service.
@@ -162,7 +162,7 @@ module MaxMind::GeoIP2
     # @raise [AuthenticationError] if there was a problem authenticating to the
     #   web service, such as an invalid or missing license key.
     #
-    # @raise [OutOfQueriesError] if your account is out of credit.
+    # @raise [InsufficientFundsError] if your account is out of credit.
     #
     # @raise [PermissionRequiredError] if your account does not have permission
     #   to use the web service.
@@ -199,7 +199,7 @@ module MaxMind::GeoIP2
     # @raise [AuthenticationError] if there was a problem authenticating to the
     #   web service, such as an invalid or missing license key.
     #
-    # @raise [OutOfQueriesError] if your account is out of credit.
+    # @raise [InsufficientFundsError] if your account is out of credit.
     #
     # @raise [PermissionRequiredError] if your account does not have permission
     #   to use the web service.
@@ -289,12 +289,10 @@ module MaxMind::GeoIP2
       when 'ACCOUNT_ID_REQUIRED',
             'ACCOUNT_ID_UNKNOWN',
             'AUTHORIZATION_INVALID',
-            'LICENSE_KEY_REQUIRED',
-            'USER_ID_REQUIRED',
-            'USER_ID_UNKNOWN'
+            'LICENSE_KEY_REQUIRED'
         raise AuthenticationError, error['error']
-      when 'OUT_OF_QUERIES', 'INSUFFICIENT_FUNDS'
-        raise OutOfQueriesError, error['error']
+      when 'INSUFFICIENT_FUNDS'
+        raise InsufficientFundsError, error['error']
       when 'PERMISSION_REQUIRED'
         raise PermissionRequiredError, error['error']
       else

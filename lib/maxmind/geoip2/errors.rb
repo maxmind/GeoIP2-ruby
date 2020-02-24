@@ -30,8 +30,8 @@ module MaxMind
     class AuthenticationError < RuntimeError
     end
 
-    # An OutOfQueriesError means the account is out of credits.
-    class OutOfQueriesError < RuntimeError
+    # An InsufficientFundsError means the account is out of credits.
+    class InsufficientFundsError < RuntimeError
     end
 
     # A PermissionRequiredError means the account does not have permission to
