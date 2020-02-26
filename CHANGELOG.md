@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.2.0
+## 0.2.0 (2020-02-26)
 
 * Added support for the GeoIP2 Precision web services: Country, City, and
   Insights.
