@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.3.0
+## 0.3.0 (2020-03-04)
 
 * Modules are now always be defined. Previously we used a shorthand syntax
   which meant including individual classes could leave module constants
