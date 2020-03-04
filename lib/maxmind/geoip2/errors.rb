@@ -1,11 +1,5 @@
 # frozen_string_literal: true
 
-# Disable this because I wish to ensure the MaxMind constant is defined,
-# which apparently must be done without using the compact syntax.
-#
-# rubocop:disable Style/ClassAndModuleChildren
-
-# A module for namespacing purposes.
 module MaxMind
   module GeoIP2
     # An AddressNotFoundError means the IP address was not found in the
@@ -45,4 +39,3 @@ module MaxMind
     end
   end
 end
-# rubocop:enable Style/ClassAndModuleChildren
