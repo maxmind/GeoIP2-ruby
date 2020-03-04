@@ -31,10 +31,6 @@ Style/TrailingCommaInHashLiteral:
 Style/NegatedIf:
     Enabled: false
 
-# This reduces indentation.
-Style/ClassAndModuleChildren:
-    EnforcedStyle: compact
-
 # This doesn't always make sense.
 Style/IfUnlessModifier:
     Enabled: false
