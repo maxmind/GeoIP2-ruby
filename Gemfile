@@ -2,6 +2,7 @@
 
 source 'https://rubygems.org'
 
+gem 'connection_pool'
 gem 'http'
 gem 'maxmind-db'
 gem 'minitest', group: :development
