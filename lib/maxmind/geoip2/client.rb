@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'connection_pool'
 require 'http'
 require 'json'
 require 'maxmind/geoip2/errors'
@@ -79,6 +80,8 @@ module MaxMind
       # @param proxy_username [String] proxy username to use, if any.
       #
       # @param proxy_password [String] proxy password to use, if any.
+      #
+      # @param pool_size [Integer] HTTP connection pool size
       def initialize(
         account_id:,
         license_key:,
@@ -88,7 +91,8 @@ module MaxMind
         proxy_address: '',
         proxy_port: 0,
         proxy_username: '',
-        proxy_password: ''
+        proxy_password: '',
+        pool_size: 5
       )
         @account_id = account_id
         @license_key = license_key
@@ -99,6 +103,11 @@ module MaxMind
         @proxy_port = proxy_port
         @proxy_username = proxy_username
         @proxy_password = proxy_password
+        @pool_size = pool_size
+
+        @connection_pool = ConnectionPool.new(size: @pool_size) do
+          make_http_client.persistent("https://#{@host}")
+        end
       end
       # rubocop:enable Metrics/ParameterLists
 
@@ -221,11 +230,7 @@ module MaxMind
         model_class.new(record, @locales)
       end
 
-      # rubocop:disable Metrics/CyclomaticComplexity
-      # rubocop:disable Metrics/PerceivedComplexity
-      def get(endpoint, ip_address)
-        url = 'https://' + @host + '/geoip/v2.1/' + endpoint + '/' + ip_address
-
+      def make_http_client
         headers = HTTP.basic_auth(user: @account_id, pass: @license_key)
                       .headers(
                         accept: 'application/json',
@@ -242,9 +247,19 @@ module MaxMind
           proxy = timeout.via(@proxy_address, opts)
         end
 
-        response = proxy.get(url)
+        proxy
+      end
 
-        body = response.to_s
+      def get(endpoint, ip_address)
+        url = '/geoip/v2.1/' + endpoint + '/' + ip_address
+
+        response = nil
+        body = nil
+        @connection_pool.with do |client|
+          response = client.get(url)
+          body = response.to_s
+        end
+
         is_json = response.headers[:content_type]&.include?('json')
 
         if response.status.client_error?
@@ -263,8 +278,6 @@ module MaxMind
 
         handle_success(endpoint, body, is_json)
       end
-      # rubocop:enable Metrics/CyclomaticComplexity
-      # rubocop:enable Metrics/PerceivedComplexity
 
       # rubocop:disable Metrics/CyclomaticComplexity
       def handle_client_error(endpoint, status, body, is_json)

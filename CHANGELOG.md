@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.0
+
+* HTTP connections are now persistent. There is a new parameter that
+  controls the maximum number of connections the client will use.
+
 ## 0.3.0 (2020-03-04)
 
 * Modules are now always be defined. Previously we used a shorthand syntax
