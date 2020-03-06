@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.metadata = {
     'bug_tracker_uri' => 'https://github.com/maxmind/GeoIP2-ruby/issues',
     'changelog_uri' => 'https://github.com/maxmind/GeoIP2-ruby/blob/master/CHANGELOG.md',
-    'documentation_uri' => 'https://github.com/maxmind/GeoIP2-ruby',
+    'documentation_uri' => 'https://www.rubydoc.info/gems/maxmind-geoip2',
     'homepage_uri' => 'https://github.com/maxmind/GeoIP2-ruby',
     'source_code_uri' => 'https://github.com/maxmind/GeoIP2-ruby',
   }
