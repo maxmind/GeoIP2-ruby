@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.4.0
+## 0.4.0 (2020-03-06)
 
 * HTTP connections are now persistent. There is a new parameter that
   controls the maximum number of connections the client will use.
