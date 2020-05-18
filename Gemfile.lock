@@ -25,7 +25,7 @@ GEM
     http-parser (1.2.1)
       ffi-compiler (>= 1.0, < 2.0)
     maxmind-db (1.1.0)
-    minitest (5.14.0)
+    minitest (5.14.1)
     parallel (1.19.1)
     parser (2.7.1.2)
       ast (~> 2.4.0)
