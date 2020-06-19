@@ -23,4 +23,10 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'connection_pool', ['~> 2.2']
   s.add_runtime_dependency 'http', ['~> 4.3']
   s.add_runtime_dependency 'maxmind-db', ['~> 1.1']
+
+  s.add_development_dependency 'minitest'
+  s.add_development_dependency 'rake'
+  s.add_development_dependency 'rubocop'
+  s.add_development_dependency 'rubocop-performance'
+  s.add_development_dependency 'webmock'
 end
