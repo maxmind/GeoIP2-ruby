@@ -251,7 +251,7 @@ module MaxMind
       end
 
       def get(endpoint, ip_address)
-        url = '/geoip/v2.1/' + endpoint + '/' + ip_address
+        url = "/geoip/v2.1/#{endpoint}/#{ip_address}"
 
         response = nil
         body = nil
