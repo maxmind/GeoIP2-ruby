@@ -42,6 +42,7 @@ class ClientTest < Minitest::Test
     },
     'traits' => {
       'ip_address' => '1.2.3.40',
+      'is_residential_proxy' => true,
       'network' => '1.2.3.0/24',
       'static_ip_score' => 1.3,
       'user_count' => 2,
@@ -82,6 +83,7 @@ class ClientTest < Minitest::Test
 
     assert_equal(42, record.continent.geoname_id)
 
+    assert_equal(true, record.traits.residential_proxy?)
     assert_equal('1.2.3.0/24', record.traits.network)
     assert_equal(1.3, record.traits.static_ip_score)
     assert_equal(2, record.traits.user_count)
