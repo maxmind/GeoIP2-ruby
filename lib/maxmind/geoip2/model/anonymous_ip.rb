@@ -55,6 +55,14 @@ module MaxMind
           get('is_public_proxy')
         end
 
+        # This is true if the IP address is on a suspected anonymizing network
+        # and belongs to a residential ISP.
+        #
+        # @return [Boolean]
+        def residential_proxy?
+          get('is_residential_proxy')
+        end
+
         # This is true if the IP address is a Tor exit node.
         #
         # @return [Boolean]

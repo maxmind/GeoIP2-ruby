@@ -16,9 +16,22 @@ class ReaderTest < Minitest::Test
     assert_equal(true, record.anonymous_vpn?)
     assert_equal(false, record.hosting_provider?)
     assert_equal(false, record.public_proxy?)
+    assert_equal(false, record.residential_proxy?)
     assert_equal(false, record.tor_exit_node?)
     assert_equal(ip, record.ip_address)
     assert_equal('1.2.0.0/16', record.network)
+
+    reader.close
+  end
+
+  def test_anonymous_ip_residential_proxy
+    reader = MaxMind::GeoIP2::Reader.new(
+      'test/data/test-data/GeoIP2-Anonymous-IP-Test.mmdb',
+    )
+    ip = '81.2.69.1'
+    record = reader.anonymous_ip(ip)
+
+    assert_equal(true, record.residential_proxy?)
 
     reader.close
   end

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0
+
+* Added the `residential_proxy?` method to
+  `MaxMind::GeoIP2::Model::AnonymousIP` and
+  `MaxMind::GeoIP2::Record::Traits` for use with the Anonymous IP database
+  and GeoIP2 Precision Insights.
+
 ## 0.4.0 (2020-03-06)
 
 * HTTP connections are now persistent. There is a new parameter that

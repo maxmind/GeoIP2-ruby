@@ -119,6 +119,15 @@ module MaxMind
           get('is_public_proxy')
         end
 
+        # This is true if the IP address is on a suspected anonymizing network
+        # and belongs to a residential ISP. This property is only available
+        # from GeoIP2 Precision Insights.
+        #
+        # @return [Boolean]
+        def residential_proxy?
+          get('is_residential_proxy')
+        end
+
         # This is true if the IP address is a Tor exit node. This property is only
         # available from GeoIP2 Precision Insights.
         #
