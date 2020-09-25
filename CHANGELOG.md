@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.5.0
+## 0.5.0 (2020-09-25)
 
 * Added the `residential_proxy?` method to
   `MaxMind::GeoIP2::Model::AnonymousIP` and
