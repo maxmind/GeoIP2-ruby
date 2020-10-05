@@ -1,0 +1,31 @@
+name: Run tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        version:
+          [
+            2.4,
+            2.5,
+            2.6,
+            2.7,
+            jruby,
+          ]
+        exclude:
+          - os: windows-latest
+            version: jruby
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.version }}
+      - name: ruby version
+        run: ruby -v
+      - run: bundle install
+      - run: bundle exec rake -t
