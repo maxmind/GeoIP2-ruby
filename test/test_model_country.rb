@@ -77,4 +77,20 @@ class CountryModelTest < Minitest::Test
     model = MaxMind::GeoIP2::Model::Country.new(RAW, ['en'])
     assert_raises(NoMethodError) { model.traits.unknown }
   end
+
+  # This can happen if we're being created from a not fully populated response
+  # when used by minFraud. It shouldn't ever happen from GeoIP2 though.
+  def test_no_traits
+    model = MaxMind::GeoIP2::Model::Country.new(
+      {
+        'continent' => {
+          'code' => 'NA',
+          'geoname_id' => 42,
+          'names' => { 'en' => 'North America' },
+        },
+      },
+      ['en'],
+    )
+    assert_equal(42, model.continent.geoname_id)
+  end
 end

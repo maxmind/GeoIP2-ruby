@@ -13,7 +13,7 @@ module MaxMind
         # @!visibility private
         def initialize(record)
           super(record)
-          if !record.key?('network') && record.key?('ip_address') &&
+          if record && !record.key?('network') && record.key?('ip_address') &&
              record.key?('prefix_length')
             ip = IPAddr.new(record['ip_address']).mask(record['prefix_length'])
             # We could use ip.prefix instead of record['prefix_length'], but that
@@ -69,7 +69,7 @@ module MaxMind
         # NAT, this may differ from the IP address locally assigned to it. This
         # attribute is returned by all end points.
         #
-        # @return [String]
+        # @return [String, nil]
         def ip_address
           get('ip_address')
         end
@@ -149,7 +149,7 @@ module MaxMind
         # this is the largest network where all of the fields besides ip_address
         # have the same value.
         #
-        # @return [String]
+        # @return [String, nil]
         def network
           get('network')
         end
