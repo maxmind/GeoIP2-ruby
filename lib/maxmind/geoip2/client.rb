@@ -68,7 +68,9 @@ module MaxMind
       # @param locales [Array<String>] a list of locale codes to use in the name
       #   property from most preferred to least preferred.
       #
-      # @param host [String] the host to use when querying the web service.
+      # @param host [String] the host to use when querying the web service. Set
+      #   this to "geolite.info" to use the GeoLite2 web service instead of
+      #   GeoIP2 Precision.
       #
       # @param timeout [Integer] the number of seconds to wait for a request
       #   before timing out. If 0, no timeout is set.
@@ -111,7 +113,7 @@ module MaxMind
       end
       # rubocop:enable Metrics/ParameterLists
 
-      # This method calls the GeoIP2 Precision City web service.
+      # This method calls the City web service.
       #
       # @param ip_address [String] IPv4 or IPv6 address as a string. If no
       #   address is provided, the address that the web service is called from is
@@ -148,7 +150,7 @@ module MaxMind
         response_for('city', MaxMind::GeoIP2::Model::City, ip_address)
       end
 
-      # This method calls the GeoIP2 Precision Country web service.
+      # This method calls the Country web service.
       #
       # @param ip_address [String] IPv4 or IPv6 address as a string. If no
       #   address is provided, the address that the web service is called from is
@@ -185,7 +187,10 @@ module MaxMind
         response_for('country', MaxMind::GeoIP2::Model::Country, ip_address)
       end
 
-      # This method calls the GeoIP2 Precision Insights web service.
+      # This method calls the Insights web service.
+      #
+      # Insights is only supported by the GeoIP2 Precision web service. The
+      # GeoLite2 web service does not support it.
       #
       # @param ip_address [String] IPv4 or IPv6 address as a string. If no
       #   address is provided, the address that the web service is called from is

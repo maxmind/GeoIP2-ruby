@@ -188,9 +188,10 @@ puts record.organization # University of Minnesota
 ### Usage
 
 To use this API, you must create a new `MaxMind::GeoIP2::Client` object
-with your account ID and license key, then you call the method
-corresponding to a specific end point, passing it the IP address you want
-to look up.
+with your account ID and license key. To use the GeoLite2 web service, you
+may also set the `host` parameter to `geolite.info`. You may then you call
+the method corresponding to a specific end point, passing it the IP address
+you want to look up.
 
 If the request succeeds, the method call will return a model class for the end
 point you called. This model in turn contains multiple record classes, each of
@@ -212,13 +213,18 @@ require 'maxmind/geoip2'
 client = MaxMind::GeoIP2::Client.new(
   account_id: 42,
   license_key: 'license_key',
+
+  # To use the GeoLite2 web service instead of GeoIP2 Precision, set
+  # the host parameter to "geolite.info":
+  # host: 'geolite.info',
 )
 
 # Replace "city" with the method corresponding to the web service that
-# you are using, e.g., "country", "insights".
+# you are using, e.g., "country", "insights". Please note that Insights
+# is only supported by GeoIP2 Precision and not the GeoLite2 web service.
 record = client.city('128.101.101.101')
 
-puts record.country.isoCode # US
+puts record.country.iso_code # US
 puts record.country.name # United States
 puts record.country.names['zh-CN'] # 美国
 
