@@ -218,7 +218,7 @@ client = MaxMind::GeoIP2::Client.new(
 # you are using, e.g., "country", "insights".
 record = client.city('128.101.101.101')
 
-puts record.country.isoCode # US
+puts record.country.iso_code # US
 puts record.country.name # United States
 puts record.country.names['zh-CN'] # 美国
 
