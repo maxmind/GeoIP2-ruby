@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.licenses    = ['Apache-2.0', 'MIT']
   s.metadata = {
     'bug_tracker_uri' => 'https://github.com/maxmind/GeoIP2-ruby/issues',
-    'changelog_uri' => 'https://github.com/maxmind/GeoIP2-ruby/blob/master/CHANGELOG.md',
+    'changelog_uri' => 'https://github.com/maxmind/GeoIP2-ruby/blob/main/CHANGELOG.md',
     'documentation_uri' => 'https://www.rubydoc.info/gems/maxmind-geoip2',
     'homepage_uri' => 'https://github.com/maxmind/GeoIP2-ruby',
     'source_code_uri' => 'https://github.com/maxmind/GeoIP2-ruby',
