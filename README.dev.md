@@ -1,4 +1,4 @@
 # How to release
 
 See
-[here](https://github.com/maxmind/MaxMind-DB-Reader-ruby/blob/master/README.dev.md).
+[here](https://github.com/maxmind/MaxMind-DB-Reader-ruby/blob/main/README.dev.md).
