@@ -77,7 +77,7 @@ require 'maxmind/geoip2'
 
 # This creates the Reader object which should be reused across lookups.
 reader = MaxMind::GeoIP2::Reader.new(
-  database: '/usr/share/GeoIP/GeoIP2-Country.mmdb'
+  database: '/usr/share/GeoIP/GeoIP2-Country.mmdb',
 )
 
 record = reader.country('128.101.101.101')
