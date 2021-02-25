@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'ipaddr'
+require 'maxmind/db'
 require 'maxmind/geoip2'
 require 'minitest/autorun'
 
@@ -467,6 +468,51 @@ class ReaderTest < Minitest::Test
       'test/data/test-data/GeoIP2-City-Test.mmdb',
     )
     assert_equal('GeoIP2-City', reader.metadata.database_type)
+    reader.close
+  end
+
+  def test_constructor_with_minimum_keyword_arguments
+    reader = MaxMind::GeoIP2::Reader.new(
+      database: 'test/data/test-data/GeoIP2-Country-Test.mmdb',
+    )
+    record = reader.country('81.2.69.160')
+    assert_equal('United Kingdom', record.country.name)
+    reader.close
+  end
+
+  def test_constructor_with_all_keyword_arguments
+    reader = MaxMind::GeoIP2::Reader.new(
+      database: 'test/data/test-data/GeoIP2-Country-Test.mmdb',
+      locales: %w[ru],
+      mode: MaxMind::DB::MODE_MEMORY,
+    )
+    record = reader.country('81.2.69.160')
+    assert_equal('Великобритания', record.country.name)
+    reader.close
+  end
+
+  def test_constructor_missing_database
+    error = assert_raises(ArgumentError) do
+      MaxMind::GeoIP2::Reader.new
+    end
+    assert_equal('Invalid database parameter', error.message)
+
+    error = assert_raises(ArgumentError) do
+      MaxMind::GeoIP2::Reader.new(
+        locales: %w[ru],
+      )
+    end
+    assert_equal('Invalid database parameter', error.message)
+  end
+
+  def test_old_constructor_parameters
+    reader = MaxMind::GeoIP2::Reader.new(
+      'test/data/test-data/GeoIP2-Country-Test.mmdb',
+      %w[ru],
+      mode: MaxMind::DB::MODE_MEMORY,
+    )
+    record = reader.country('81.2.69.160')
+    assert_equal('Великобритания', record.country.name)
     reader.close
   end
 end

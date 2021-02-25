@@ -20,13 +20,16 @@ module MaxMind
     #
     #   require 'maxmind/geoip2'
     #
-    #   reader = MaxMind::GeoIP2::Reader.new('GeoIP2-Country.mmdb')
+    #   reader = MaxMind::GeoIP2::Reader.new(database: 'GeoIP2-Country.mmdb')
     #
     #   record = reader.country('1.2.3.4')
     #   puts record.country.iso_code
     #
     #   reader.close
     class Reader
+      # rubocop:disable Metrics/CyclomaticComplexity
+      # rubocop:disable Metrics/PerceivedComplexity
+
       # Create a Reader for looking up IP addresses in a GeoIP2/GeoLite2 database
       # file.
       #
@@ -37,30 +40,52 @@ module MaxMind
       # threads. It is safe to use after forking only if you use
       # MaxMind::DB::MODE_MEMORY or if your version of Ruby supports IO#pread.
       #
-      # @param database [String] a path to a GeoIP2/GeoLite2 database file.
+      # @overload initialize(database:, locales: ['en'], mode: MaxMind::DB::MODE_AUTO)
+      #   @param database [String] a path to a GeoIP2/GeoLite2 database file.
+      #   @param locales [Array<String>] a list of locale codes to use in the name
+      #     property from most preferred to least preferred.
+      #   @param mode [Symbol] Defines how to open the database. It may be one of
+      #     MaxMind::DB::MODE_AUTO, MaxMind::DB::MODE_FILE, or
+      #     MaxMind::DB::MODE_MEMORY. If you don't provide one, the Reader uses
+      #     MaxMind::DB::MODE_AUTO. Refer to the definition of those constants in
+      #     MaxMind::DB for an explanation of their meaning.
       #
-      # @param locales [Array<String>] a list of locale codes to use in the name
-      #   property from most preferred to least preferred.
-      #
-      # @param options [Hash<Symbol, Symbol>] options controlling the behavior of
-      #   the Reader.
-      #
-      # @option options [Symbol] :mode Defines how to open the database. It may
-      #   be one of MaxMind::DB::MODE_AUTO, MaxMind::DB::MODE_FILE, or
-      #   MaxMind::DB::MODE_MEMORY. If you don't provide one, the Reader uses
-      #   MaxMind::DB::MODE_AUTO. Refer to the definition of those constants in
-      #   MaxMind::DB for an explanation of their meaning.
-      #
-      # @raise [MaxMind::DB::InvalidDatabaseError] if the database is corrupt or
-      #   invalid.
+      # @raise [MaxMind::DB::InvalidDatabaseError] if the database is corrupt
+      #   or invalid.
       #
       # @raise [ArgumentError] if the mode is invalid.
-      def initialize(database, locales = ['en'], options = {})
+      def initialize(*args)
+        # This if statement is to let us support calling as though we are using
+        # Ruby 2.0 keyword arguments. We can't use keyword argument syntax as
+        # we want to be backwards compatible with the old way we accepted
+        # parameters, which looked like:
+        # def initialize(database, locales = ['en'], options = {})
+        if args.length == 1 && args[0].instance_of?(Hash)
+          database = args[0][:database]
+          locales = args[0][:locales]
+          mode = args[0][:mode]
+        else
+          database = args[0]
+          locales = args[1]
+          mode = args[2].instance_of?(Hash) ? args[2][:mode] : nil
+        end
+
+        if !database.instance_of?(String)
+          raise ArgumentError, 'Invalid database parameter'
+        end
+
+        locales = ['en'] if locales.nil? || locales.empty?
+
+        options = {}
+        options[:mode] = mode if !mode.nil?
         @reader = MaxMind::DB.new(database, options)
+
         @type = @reader.metadata.database_type
-        locales = ['en'] if locales.empty?
+
         @locales = locales
       end
+      # rubocop:enable Metrics/CyclomaticComplexity
+      # rubocop:enable Metrics/PerceivedComplexity
 
       # Look up the IP address in the database.
       #

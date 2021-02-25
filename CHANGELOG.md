@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.0
+
+* Updated the `MaxMind::GeoIP2::Reader` constructor to support being called
+  using keyword arguments. For example, you may now create a `Reader` using
+  `MaxMind::GeoIP2::Reader.new(database: 'GeoIP2-Country.mmdb')` instead of
+  using positional arguments. This is intended to make it easier to pass in
+  optional arguments. Positional argument calling is still supported.
+
 ## 0.5.0 (2020-09-25)
 
 * Added the `residential_proxy?` method to

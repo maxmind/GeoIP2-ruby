@@ -339,12 +339,12 @@ class ClientTest < Minitest::Test
         status: 400,
       },
       '1.2.3.71' => {
-        body: JSON.generate({ 'code': 'HI' }),
+        body: JSON.generate({ code: 'HI' }),
         headers: { 'Content-Type': CONTENT_TYPES[:country] },
         status: 400,
       },
       '1.2.3.8' => {
-        body: JSON.generate({ 'weird': 42 }),
+        body: JSON.generate({ weird: 42 }),
         headers: { 'Content-Type': CONTENT_TYPES[:country] },
         status: 400,
       },

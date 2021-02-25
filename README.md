@@ -47,7 +47,9 @@ for more details.
 require 'maxmind/geoip2'
 
 # This creates the Reader object which should be reused across lookups.
-reader = MaxMind::GeoIP2::Reader.new('/usr/share/GeoIP/GeoIP2-City.mmdb')
+reader = MaxMind::GeoIP2::Reader.new(
+  database: '/usr/share/GeoIP/GeoIP2-City.mmdb',
+)
 
 record = reader.city('128.101.101.101')
 
@@ -74,7 +76,9 @@ puts record.traits.network # 128.101.101.101/32
 require 'maxmind/geoip2'
 
 # This creates the Reader object which should be reused across lookups.
-reader = MaxMind::GeoIP2::Reader.new('/usr/share/GeoIP/GeoIP2-Country.mmdb')
+reader = MaxMind::GeoIP2::Reader.new(
+  database: '/usr/share/GeoIP/GeoIP2-Country.mmdb',
+)
 
 record = reader.country('128.101.101.101')
 
@@ -89,7 +93,9 @@ puts record.country.names['zh-CN'] # '美国'
 require 'maxmind/geoip2'
 
 # This creates the Reader object which should be reused across lookups.
-reader = MaxMind::GeoIP2::Reader.new('/usr/share/GeoIP/GeoIP2-Enterprise.mmdb')
+reader = MaxMind::GeoIP2::Reader.new(
+  database: '/usr/share/GeoIP/GeoIP2-Enterprise.mmdb',
+)
 
 record = reader.enterprise('128.101.101.101')
 
@@ -120,7 +126,9 @@ puts record.traits.network # 128.101.101.101/32
 require 'maxmind/geoip2'
 
 # This creates the Reader object which should be reused across lookups.
-reader = MaxMind::GeoIP2::Reader.new('/usr/share/GeoIP/GeoIP2-Anonymous-IP.mmdb')
+reader = MaxMind::GeoIP2::Reader.new(
+  database: '/usr/share/GeoIP/GeoIP2-Anonymous-IP.mmdb',
+)
 
 record = reader.anonymous_ip('128.101.101.101')
 
@@ -133,7 +141,9 @@ puts "Anonymous" if record.is_anonymous
 require 'maxmind/geoip2'
 
 # This creates the Reader object which should be reused across lookups.
-reader = MaxMind::GeoIP2::Reader.new('/usr/share/GeoIP/GeoLite2-ASN.mmdb')
+reader = MaxMind::GeoIP2::Reader.new(
+  database: '/usr/share/GeoIP/GeoLite2-ASN.mmdb',
+)
 
 record = reader.asn('128.101.101.101')
 
@@ -147,7 +157,9 @@ puts record.autonomous_system_organization # Example Ltd
 require 'maxmind/geoip2'
 
 # This creates the Reader object which should be reused across lookups.
-reader = MaxMind::GeoIP2::Reader.new('/usr/share/GeoIP/GeoIP2-Connection-Type.mmdb')
+reader = MaxMind::GeoIP2::Reader.new(
+  database: '/usr/share/GeoIP/GeoIP2-Connection-Type.mmdb',
+)
 
 record = reader.connection_type('128.101.101.101')
 
@@ -160,7 +172,9 @@ puts record.connection_type # Cable/DSL
 require 'maxmind/geoip2'
 
 # This creates the Reader object which should be reused across lookups.
-reader = MaxMind::GeoIP2::Reader.new('/usr/share/GeoIP/GeoIP2-Domain.mmdb')
+reader = MaxMind::GeoIP2::Reader.new(
+  database: '/usr/share/GeoIP/GeoIP2-Domain.mmdb',
+)
 
 record = reader.domain('128.101.101.101')
 
@@ -173,7 +187,9 @@ puts record.domain # example.com
 require 'maxmind/geoip2'
 
 # This creates the Reader object which should be reused across lookups.
-reader = MaxMind::GeoIP2::Reader.new('/usr/share/GeoIP/GeoIP2-ISP.mmdb')
+reader = MaxMind::GeoIP2::Reader.new(
+  database: '/usr/share/GeoIP/GeoIP2-ISP.mmdb',
+)
 
 record = reader.isp('128.101.101.101')
 
