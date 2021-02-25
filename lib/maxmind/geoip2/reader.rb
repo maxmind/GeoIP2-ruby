@@ -74,7 +74,7 @@ module MaxMind
           raise ArgumentError, 'Invalid database parameter'
         end
 
-        locales = ['en'] if !locales.instance_of?(Array) || locales.empty?
+        locales = ['en'] if locales.nil? || locales.empty?
 
         options = {}
         options[:mode] = mode if !mode.nil?
