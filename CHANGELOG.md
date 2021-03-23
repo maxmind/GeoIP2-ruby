@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.6.0
+## 0.6.0 (2021-03-23)
 
 * Updated the `MaxMind::GeoIP2::Reader` constructor to support being called
   using keyword arguments. For example, you may now create a `Reader` using
