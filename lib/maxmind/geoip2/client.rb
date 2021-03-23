@@ -245,11 +245,11 @@ module MaxMind
 
         proxy = timeout
         if @proxy_address != ''
-          opts = {}
-          opts[:proxy_port] = @proxy_port if @proxy_port != 0
-          opts[:proxy_username] = @proxy_username if @proxy_username != ''
-          opts[:proxy_password] = @proxy_password if @proxy_password != ''
-          proxy = timeout.via(@proxy_address, opts)
+          proxy_params = [@proxy_address]
+          proxy_params << (@proxy_port == 0 ? nil : @proxy_port)
+          proxy_params << (@proxy_username == '' ? nil : @proxy_username)
+          proxy_params << (@proxy_password == '' ? nil : @proxy_password)
+          proxy = timeout.via(*proxy_params)
         end
 
         proxy
