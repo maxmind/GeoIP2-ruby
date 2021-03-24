@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.7.0
+## 0.7.0 (2021-03-24)
 
 * Ensured defaults are set when creating a `MaxMind::GeoIP2::Client` in the
   case when args are explicitly passed in as `nil`. Pull Request by Manoj

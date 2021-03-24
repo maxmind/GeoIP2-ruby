@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.files       = Dir['**/*']
   s.name        = 'maxmind-geoip2'
   s.summary     = 'A gem for interacting with the GeoIP2 webservices and databases.'
-  s.version     = '0.6.0'
+  s.version     = '0.7.0'
 
   s.description = 'A gem for interacting with the GeoIP2 webservices and databases. MaxMind provides geolocation data as downloadable databases as well as through a webservice.'
   s.email = 'support@maxmind.com'
