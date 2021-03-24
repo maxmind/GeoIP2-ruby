@@ -55,6 +55,8 @@ module MaxMind
     #   puts record.country.iso_code
     class Client
       # rubocop:disable Metrics/ParameterLists
+      # rubocop:disable Metrics/CyclomaticComplexity
+      # rubocop:disable Metrics/PerceivedComplexity
 
       # Create a Client that may be used to query a GeoIP2 Precision web service.
       #
@@ -98,19 +100,21 @@ module MaxMind
       )
         @account_id = account_id
         @license_key = license_key
-        @locales = locales
-        @host = host
-        @timeout = timeout
-        @proxy_address = proxy_address
-        @proxy_port = proxy_port
-        @proxy_username = proxy_username
-        @proxy_password = proxy_password
-        @pool_size = pool_size
+        @locales = locales || ['en']
+        @host = host || 'geoip.maxmind.com'
+        @timeout = timeout || 0
+        @proxy_address = proxy_address || ''
+        @proxy_port = proxy_port || 0
+        @proxy_username = proxy_username || ''
+        @proxy_password = proxy_password || ''
+        @pool_size = pool_size || 5
 
         @connection_pool = ConnectionPool.new(size: @pool_size) do
           make_http_client.persistent("https://#{@host}")
         end
       end
+      # rubocop:enable Metrics/PerceivedComplexity
+      # rubocop:enable Metrics/CyclomaticComplexity
       # rubocop:enable Metrics/ParameterLists
 
       # This method calls the City web service.

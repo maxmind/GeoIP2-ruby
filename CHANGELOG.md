@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.1
+
+* Ensured defaults are set when creating the client in the case when args are
+  explicitly passed in as `nil`. Pull Request by Manoj Dayaram. Github #31
+
 ## 0.6.0 (2021-03-23)
 
 * Updated the `MaxMind::GeoIP2::Reader` constructor to support being called
