@@ -329,7 +329,7 @@ client API, please see [our support page](https://www.maxmind.com/en/support).
 
 ## Requirements
 
-This code requires Ruby version 2.4 or higher.
+This code requires Ruby version 2.5 or higher.
 
 ## Contributing
 

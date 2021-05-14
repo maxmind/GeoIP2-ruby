@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.0
+
+* Ruby 2.4 is no longer supported. If you're using Ruby 2.4, please use
+  version 0.7.0 of this gem.
+* Expand accepted versions of the `http` gem to include 5.0+.
+* Bump version to 1.0.0 since we have been at 0.x for over a year. There is
+  no breaking change.
+
 ## 0.7.0 (2021-03-24)
 
 * Ensured defaults are set when creating a `MaxMind::GeoIP2::Client` in the
