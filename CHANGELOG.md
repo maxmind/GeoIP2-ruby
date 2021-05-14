@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0.0
+## 1.0.0 (2021-05-14)
 
 * Ruby 2.4 is no longer supported. If you're using Ruby 2.4, please use
   version 0.7.0 of this gem.
