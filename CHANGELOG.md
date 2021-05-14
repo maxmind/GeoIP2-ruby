@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.8.0
+
+* Ruby 2.4 is no longer supported. If you're using Ruby 2.4, please use
+  version 0.7.0 of this gem.
+
 ## 0.7.0 (2021-03-24)
 
 * Ensured defaults are set when creating a `MaxMind::GeoIP2::Client` in the
