@@ -4,6 +4,7 @@
 
 * Ruby 2.4 is no longer supported. If you're using Ruby 2.4, please use
   version 0.7.0 of this gem.
+* Expand accepted versions of the `http` gem to include 5.0+.
 
 ## 0.7.0 (2021-03-24)
 
