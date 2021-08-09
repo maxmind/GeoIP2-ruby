@@ -5,12 +5,12 @@ module MaxMind
     # Module's base error class
     class Error < StandardError
     end
-    
+
     # Base error class for all errors that originate from the IP address
     # itself and will not change when retried.
     class AddressError < Error
     end
-    
+
     # An AddressNotFoundError means the IP address was not found in the
     # database or the web service said the IP address was not found.
     class AddressNotFoundError < AddressError
