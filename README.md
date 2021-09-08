@@ -2,11 +2,9 @@
 
 ## Description
 
-This is the Ruby API for the GeoIP2
-[webservices](https://dev.maxmind.com/geoip/geoip2/web-services) and
-[databases](https://dev.maxmind.com/geoip/geoip2/geolite2/). This API also
-works with the free [GeoLite2
-databases](https://dev.maxmind.com/geoip/geoip2/geolite2/).
+This is the Ruby API for the GeoIP2 and GeoLite2
+[webservices](https://dev.maxmind.com/geoip/docs/web-services?lang=en)
+and [databases](https://dev.maxmind.com/geoip/docs/databases?lang=en).
 
 ## Installation
 
@@ -282,7 +280,7 @@ point may offer a particular piece of data, MaxMind does not always have
 every piece of data for any given IP address.
 
 See the [GeoIP2 Precision web service
-docs](https://dev.maxmind.com/geoip/geoip2/web-services) for details on
+docs](https://dev.maxmind.com/geoip/docs/web-services?lang=en) for details on
 what data each end point may return.
 
 The only piece of data which is always returned is the `ip_address`
