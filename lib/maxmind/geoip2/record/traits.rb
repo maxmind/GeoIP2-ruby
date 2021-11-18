@@ -111,6 +111,28 @@ module MaxMind
           get('is_legitimate_proxy')
         end
 
+        # The {https://en.wikipedia.org/wiki/Mobile_country_code mobile country
+        # code (MCC)} associated with the IP address and ISP.
+        #
+        # This attribute is only available from the City and Insights web service
+        # and the GeoIP2 Enterprise database.
+        #
+        # @return [String, nil]
+        def mobile_country_code
+          get('mobile_country_code')
+        end
+
+        # The {https://en.wikipedia.org/wiki/Mobile_country_code mobile network
+        # code (MNC)} associated with the IP address and ISP.
+        #
+        # This attribute is only available from the City and Insights web service
+        # and the GeoIP2 Enterprise database.
+        #
+        # @return [String, nil]
+        def mobile_network_code
+          get('mobile_network_code')
+        end
+
         # This is true if the IP address belongs to a public proxy. This property
         # is only available from GeoIP2 Precision Insights.
         #

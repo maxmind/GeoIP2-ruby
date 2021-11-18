@@ -36,6 +36,22 @@ module MaxMind
           get('isp')
         end
 
+        # The {https://en.wikipedia.org/wiki/Mobile_country_code mobile country
+        # code (MCC)} associated with the IP address and ISP.
+        #
+        # @return [String, nil]
+        def mobile_country_code
+          get('mobile_country_code')
+        end
+
+        # The {https://en.wikipedia.org/wiki/Mobile_country_code mobile network
+        # code (MNC)} associated with the IP address and ISP.
+        #
+        # @return [String, nil]
+        def mobile_network_code
+          get('mobile_network_code')
+        end
+
         # The network in CIDR notation associated with the record. In particular,
         # this is the largest network where all of the fields besides ip_address
         # have the same value.
