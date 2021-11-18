@@ -150,7 +150,7 @@ class ReaderTest < Minitest::Test
     assert_equal('Europe', record.continent.name)
 
     assert_equal(2_635_167, record.country.geoname_id)
-    assert_equal(true, record.country.in_european_union?)
+    assert_equal(false, record.country.in_european_union?)
     assert_equal('GB', record.country.iso_code)
     assert_equal(
       {
@@ -416,7 +416,7 @@ class ReaderTest < Minitest::Test
         "test/data/test-data/GeoIP2-#{t['file']}-Test.mmdb",
       )
       record = reader.send(t['method'], '81.2.69.160')
-      assert_equal(true, record.country.in_european_union?)
+      assert_equal(false, record.country.in_european_union?)
       assert_equal(false, record.registered_country.in_european_union?)
       reader.close
     end
