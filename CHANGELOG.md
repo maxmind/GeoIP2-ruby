@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.1.0
+## 1.1.0 (2021-11-18)
 
 * Exceptions from this gem now inherit from `MaxMind::GeoIP2::Error`. IP
   address related exceptions now inherit from
