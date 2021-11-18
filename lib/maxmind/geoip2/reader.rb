@@ -37,8 +37,7 @@ module MaxMind
       # Reader and reuse it.
       #
       # Once created, the Reader is safe to use for lookups from multiple
-      # threads. It is safe to use after forking only if you use
-      # MaxMind::DB::MODE_MEMORY or if your version of Ruby supports IO#pread.
+      # threads. It is safe to use after forking.
       #
       # @overload initialize(database:, locales: ['en'], mode: MaxMind::DB::MODE_AUTO)
       #   @param database [String] a path to a GeoIP2/GeoLite2 database file.

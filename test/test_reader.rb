@@ -150,7 +150,7 @@ class ReaderTest < Minitest::Test
     assert_equal('Europe', record.continent.name)
 
     assert_equal(2_635_167, record.country.geoname_id)
-    assert_equal(true, record.country.in_european_union?)
+    assert_equal(false, record.country.in_european_union?)
     assert_equal('GB', record.country.iso_code)
     assert_equal(
       {
@@ -266,6 +266,14 @@ class ReaderTest < Minitest::Test
     assert_equal(ip_address, record.traits.ip_address)
     assert_equal('74.209.16.0/20', record.traits.network)
 
+    # This IP has MCC/MNC data.
+
+    ip_address = '149.101.100.0'
+    record = reader.enterprise(ip_address)
+
+    assert_equal('310', record.traits.mobile_country_code)
+    assert_equal('004', record.traits.mobile_network_code)
+
     reader.close
   end
 
@@ -282,6 +290,14 @@ class ReaderTest < Minitest::Test
     assert_equal('Telstra Internet', record.organization)
     assert_equal(ip, record.ip_address)
     assert_equal('1.128.0.0/11', record.network)
+
+    # This IP has MCC/MNC data.
+
+    ip_address = '149.101.100.0'
+    record = reader.isp(ip_address)
+
+    assert_equal('310', record.mobile_country_code)
+    assert_equal('004', record.mobile_network_code)
 
     reader.close
   end
@@ -416,7 +432,7 @@ class ReaderTest < Minitest::Test
         "test/data/test-data/GeoIP2-#{t['file']}-Test.mmdb",
       )
       record = reader.send(t['method'], '81.2.69.160')
-      assert_equal(true, record.country.in_european_union?)
+      assert_equal(false, record.country.in_european_union?)
       assert_equal(false, record.registered_country.in_european_union?)
       reader.close
     end

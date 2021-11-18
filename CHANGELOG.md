@@ -6,6 +6,14 @@
   address related exceptions now inherit from
   `MaxMind::GeoIP2::AddressError`, which itself inherits from
   `MaxMind::GeoIP2::Error`. Pull Request by gr8bit. GitHub #35.
+* Support for mobile country code (MCC) and mobile network codes (MNC) was
+  added for the GeoIP2 ISP and Enterprise databases as well as the GeoIP2
+  City and Insights web services. `mobile_country_code` and
+  `mobile_network_code` attributes were added to
+  `MaxMind::GeoIP2::Model::ISP` for the GeoIP2 ISP database and
+  `MaxMind::GeoIP2::Record::Traits` for the Enterprise database and the
+  GeoIP2 City and Insights web services. We expect this data to be
+  available by late January, 2022.
 
 ## 1.0.0 (2021-05-14)
 
