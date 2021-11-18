@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
     'changelog_uri' => 'https://github.com/maxmind/GeoIP2-ruby/blob/main/CHANGELOG.md',
     'documentation_uri' => 'https://www.rubydoc.info/gems/maxmind-geoip2',
     'homepage_uri' => 'https://github.com/maxmind/GeoIP2-ruby',
+    'rubygems_mfa_required' => 'true',
     'source_code_uri' => 'https://github.com/maxmind/GeoIP2-ruby',
   }
   s.required_ruby_version = '>= 2.5.0'
