@@ -9,12 +9,11 @@ require 'maxmind/geoip2/record/subdivision'
 module MaxMind
   module GeoIP2
     module Model
-      # Model class for the data returned by the GeoIP2 City web service and
-      # database. It is also used for GeoLite2 City lookups.
+      # Model class for the data returned by the GeoIP2 City Plus web service
+      # and the City database. It is also used for GeoLite2 City lookups.
       #
-      # The only difference between the City and Insights model classes is which
-      # fields in each record may be populated. See
-      # https://dev.maxmind.com/geoip/docs/web-services?lang=en for more details.
+      # See https://dev.maxmind.com/geoip/docs/web-services?lang=en for more
+      # details.
       #
       # See {MaxMind::GeoIP2::Model::Country} for inherited methods.
       class City < Country
