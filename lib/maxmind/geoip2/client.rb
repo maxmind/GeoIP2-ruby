@@ -11,8 +11,8 @@ require 'maxmind/geoip2/model/insights'
 module MaxMind
   module GeoIP2
     # This class provides a client API for all the
-    # {https://dev.maxmind.com/geoip/docs/web-services?lang=en GeoIP2 Precision web
-    # services}. The services are Country, City, and Insights. Each service
+    # {https://dev.maxmind.com/geoip/docs/web-services?lang=en GeoIP2 web
+    # services}. The services are Country, City Plus, and Insights. Each service
     # returns a different set of data about an IP address, with Country returning
     # the least data and Insights the most.
     #
@@ -58,7 +58,7 @@ module MaxMind
       # rubocop:disable Metrics/CyclomaticComplexity
       # rubocop:disable Metrics/PerceivedComplexity
 
-      # Create a Client that may be used to query a GeoIP2 Precision web service.
+      # Create a Client that may be used to query a GeoIP2 web service.
       #
       # Once created, the Client is safe to use for lookups from multiple
       # threads.
@@ -72,7 +72,7 @@ module MaxMind
       #
       # @param host [String] the host to use when querying the web service. Set
       #   this to "geolite.info" to use the GeoLite2 web service instead of
-      #   GeoIP2 Precision.
+      #   the GeoIP2 web service.
       #
       # @param timeout [Integer] the number of seconds to wait for a request
       #   before timing out. If 0, no timeout is set.
@@ -117,7 +117,7 @@ module MaxMind
       # rubocop:enable Metrics/CyclomaticComplexity
       # rubocop:enable Metrics/ParameterLists
 
-      # This method calls the City web service.
+      # This method calls the City Plus web service.
       #
       # @param ip_address [String] IPv4 or IPv6 address as a string. If no
       #   address is provided, the address that the web service is called from is
@@ -193,8 +193,8 @@ module MaxMind
 
       # This method calls the Insights web service.
       #
-      # Insights is only supported by the GeoIP2 Precision web service. The
-      # GeoLite2 web service does not support it.
+      # Insights is only supported by the GeoIP2 web service. The GeoLite2 web
+      # service does not support it.
       #
       # @param ip_address [String] IPv4 or IPv6 address as a string. If no
       #   address is provided, the address that the web service is called from is

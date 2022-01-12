@@ -22,8 +22,8 @@ module MaxMind
 
         # The autonomous system number associated with the IP address. See
         # Wikipedia[https://en.wikipedia.org/wiki/Autonomous_system_(Internet)].
-        # This attribute is only available from the City and Insights web service
-        # and the GeoIP2 Enterprise database.
+        # This attribute is only available from the City Plus and Insights web
+        # services and the Enterprise database.
         #
         # @return [Integer, nil]
         def autonomous_system_number
@@ -33,8 +33,8 @@ module MaxMind
         # The organization associated with the registered autonomous system number
         # for the IP address. See
         # Wikipedia[https://en.wikipedia.org/wiki/Autonomous_system_(Internet)].
-        # This attribute is only available from the City and Insights web service
-        # and the GeoIP2 Enterprise database.
+        # This attribute is only available from the City Plus and Insights web
+        # services and the Enterprise database.
         #
         # @return [String, nil]
         def autonomous_system_organization
@@ -43,8 +43,7 @@ module MaxMind
 
         # The connection type may take the following  values: "Dialup",
         # "Cable/DSL", "Corporate", "Cellular". Additional values may be added in
-        # the future. This attribute is only available in the GeoIP2 Enterprise
-        # database.
+        # the future. This attribute is only available in the Enterprise database.
         #
         # @return [String, nil]
         def connection_type
@@ -53,8 +52,8 @@ module MaxMind
 
         # The second level domain associated with the IP address. This will be
         # something like "example.com" or "example.co.uk", not "foo.example.com".
-        # This attribute is only available from the City and Insights web service
-        # and the GeoIP2 Enterprise database.
+        # This attribute is only available from the City Plus and Insights web
+        # services and the Enterprise database.
         #
         # @return [String, nil]
         def domain
@@ -73,7 +72,7 @@ module MaxMind
         end
 
         # This is true if the IP address belongs to any sort of anonymous network.
-        # This property is only available from GeoIP2 Precision Insights.
+        # This property is only available from Insights.
         #
         # @return [Boolean]
         def anonymous?
@@ -83,8 +82,7 @@ module MaxMind
         # This is true if the IP address is registered to an anonymous VPN
         # provider. If a VPN provider does not register subnets under names
         # associated with them, we will likely only flag their IP ranges using the
-        # hosting_provider? property. This property is only available from GeoIP2
-        # Precision Insights.
+        # hosting_provider? property. This property is only available from Insights.
         #
         # @return [Boolean]
         def anonymous_vpn?
@@ -93,7 +91,7 @@ module MaxMind
 
         # This is true if the IP address belongs to a hosting or VPN provider (see
         # description of the anonymous_vpn? property). This property is only
-        # available from GeoIP2 Precision Insights.
+        # available from Insights.
         #
         # @return [Boolean]
         def hosting_provider?
@@ -102,7 +100,7 @@ module MaxMind
 
         # This attribute is true if MaxMind believes this IP address to be a
         # legitimate proxy, such as an internal VPN used by a corporation. This
-        # attribute is only available in the GeoIP2 Enterprise database.
+        # attribute is only available in the Enterprise database.
         #
         # @return [Boolean]
         def legitimate_proxy?
@@ -112,8 +110,8 @@ module MaxMind
         # The {https://en.wikipedia.org/wiki/Mobile_country_code mobile country
         # code (MCC)} associated with the IP address and ISP.
         #
-        # This attribute is only available from the City and Insights web service
-        # and the GeoIP2 Enterprise database.
+        # This attribute is only available from the City Plus and Insights web
+        # services and the Enterprise database.
         #
         # @return [String, nil]
         def mobile_country_code
@@ -123,8 +121,8 @@ module MaxMind
         # The {https://en.wikipedia.org/wiki/Mobile_country_code mobile network
         # code (MNC)} associated with the IP address and ISP.
         #
-        # This attribute is only available from the City and Insights web service
-        # and the GeoIP2 Enterprise database.
+        # This attribute is only available from the City Plus and Insights web
+        # services and the Enterprise database.
         #
         # @return [String, nil]
         def mobile_network_code
@@ -132,7 +130,7 @@ module MaxMind
         end
 
         # This is true if the IP address belongs to a public proxy. This property
-        # is only available from GeoIP2 Precision Insights.
+        # is only available from Insights.
         #
         # @return [Boolean]
         def public_proxy?
@@ -141,7 +139,7 @@ module MaxMind
 
         # This is true if the IP address is on a suspected anonymizing network
         # and belongs to a residential ISP. This property is only available
-        # from GeoIP2 Precision Insights.
+        # from Insights.
         #
         # @return [Boolean]
         def residential_proxy?
@@ -149,7 +147,7 @@ module MaxMind
         end
 
         # This is true if the IP address is a Tor exit node. This property is only
-        # available from GeoIP2 Precision Insights.
+        # available from Insights.
         #
         # @return [Boolean]
         def tor_exit_node?
@@ -157,7 +155,7 @@ module MaxMind
         end
 
         # The name of the ISP associated with the IP address. This attribute is
-        # only available from the City and Insights web services and the GeoIP2
+        # only available from the City Plus and Insights web services and the
         # Enterprise database.
         #
         # @return [String, nil]
@@ -175,8 +173,8 @@ module MaxMind
         end
 
         # The name of the organization associated with the IP address. This
-        # attribute is only available from the City and Insights web services and
-        # the GeoIP2 Enterprise database.
+        # attribute is only available from the City Plus and Insights web services
+        # and the Enterprise database.
         #
         # @return [String, nil]
         def organization
@@ -184,7 +182,7 @@ module MaxMind
         end
 
         # An indicator of how static or dynamic an IP address is. This property is
-        # only available from GeoIP2 Precision Insights.
+        # only available from Insights.
         #
         # @return [Float, nil]
         def static_ip_score
@@ -193,8 +191,7 @@ module MaxMind
 
         # The estimated number of users sharing the IP/network during the past 24
         # hours. For IPv4, the count is for the individual IP. For IPv6, the count
-        # is for the /64 network. This property is only available from GeoIP2
-        # Precision Insights.
+        # is for the /64 network. This property is only available from Insights.
         #
         # @return [Integer, nil]
         def user_count
@@ -221,7 +218,7 @@ module MaxMind
         # * traveler
         #
         # This attribute is only available from the Insights web service and the
-        # GeoIP2 Enterprise database.
+        # Enterprise database.
         #
         # @return [String, nil]
         def user_type

@@ -228,14 +228,15 @@ client = MaxMind::GeoIP2::Client.new(
   account_id: 42,
   license_key: 'license_key',
 
-  # To use the GeoLite2 web service instead of GeoIP2 Precision, set
+  # To use the GeoLite2 web service instead of the GeoIP2 web service, set
   # the host parameter to "geolite.info":
   # host: 'geolite.info',
 )
 
 # Replace "city" with the method corresponding to the web service that
 # you are using, e.g., "country", "insights". Please note that Insights
-# is only supported by GeoIP2 Precision and not the GeoLite2 web service.
+# is only supported by the GeoIP2 web service and not the GeoLite2 web
+# service.
 record = client.city('128.101.101.101')
 
 puts record.country.iso_code # US
@@ -279,8 +280,8 @@ which can be populated vary between end points. In addition, while an end
 point may offer a particular piece of data, MaxMind does not always have
 every piece of data for any given IP address.
 
-See the [GeoIP2 Precision web service
-docs](https://dev.maxmind.com/geoip/docs/web-services?lang=en) for details on
+See the [GeoIP2 web service
+documentation](https://dev.maxmind.com/geoip/docs/web-services?lang=en) for details on
 what data each end point may return.
 
 The only piece of data which is always returned is the `ip_address`
@@ -340,7 +341,7 @@ This library uses [Semantic Versioning](https://semver.org/).
 
 ## Copyright and License
 
-This software is Copyright (c) 2020-2021 by MaxMind, Inc.
+This software is Copyright (c) 2020-2022 by MaxMind, Inc.
 
 This is free software, licensed under the [Apache License, Version
 2.0](LICENSE-APACHE) or the [MIT License](LICENSE-MIT), at your option.
