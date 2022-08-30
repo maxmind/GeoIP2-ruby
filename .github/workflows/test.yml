@@ -20,7 +20,7 @@ jobs:
           - os: windows-latest
             version: jruby
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: true
       - uses: ruby/setup-ruby@v1
