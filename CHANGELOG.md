@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.0
+
+* `MaxMind::GeoIP2::Client` now validates the IP address before making a
+  request to the web service.
+
 ## 1.1.0 (2021-11-18)
 
 * Exceptions from this gem now inherit from `MaxMind::GeoIP2::Error`. IP

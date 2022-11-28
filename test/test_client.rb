@@ -126,10 +126,21 @@ class ClientTest < Minitest::Test
     )
   end
 
-  def test_invalid_ip_error
+  def test_invalid_ip_error_from_web_service
     error = assert_raises(
       MaxMind::GeoIP2::AddressInvalidError,
     ) { request(:country, '1.2.3.6') }
+
+    assert_equal(
+      'The value "1.2.3" is not a valid IP address',
+      error.message,
+    )
+  end
+
+  def test_invalid_ip_error_from_client
+    error = assert_raises(
+      MaxMind::GeoIP2::AddressInvalidError,
+    ) { request(:country, '1.2.3') }
 
     assert_equal(
       'The value "1.2.3" is not a valid IP address',
@@ -290,7 +301,7 @@ class ClientTest < Minitest::Test
       license_key: 'abcdef123456',
     )
 
-    client.send(method, '1.2.3.4')
+    client.send(method, ip_address)
   end
 
   def get_response(ip_address)
@@ -300,6 +311,7 @@ class ClientTest < Minitest::Test
         headers: { 'Content-Type': CONTENT_TYPES[:country] },
         status: 200,
       },
+      '1.2.3' => {},
       '1.2.3.4' => {
         body: JSON.generate(COUNTRY),
         headers: { 'Content-Type': CONTENT_TYPES[:country] },

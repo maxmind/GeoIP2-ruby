@@ -7,6 +7,7 @@ require 'maxmind/geoip2/errors'
 require 'maxmind/geoip2/model/city'
 require 'maxmind/geoip2/model/country'
 require 'maxmind/geoip2/model/insights'
+require 'resolv'
 
 module MaxMind
   module GeoIP2
@@ -234,6 +235,10 @@ module MaxMind
       private
 
       def response_for(endpoint, model_class, ip_address)
+        if ip_address != 'me' && ip_address !~ Resolv::AddressRegex
+          raise AddressInvalidError, "The value \"#{ip_address}\" is not a valid IP address"
+        end
+
         record = get(endpoint, ip_address)
 
         model_class.new(record, @locales)
