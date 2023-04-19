@@ -39,3 +39,6 @@ Style/IfUnlessModifier:
 # This should only be enabled when we are on Ruby 2.5+.
 Style/HashTransformKeys:
     Enabled: false
+
+Gemspec/DevelopmentDependencies:
+  Enabled: false

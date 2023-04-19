@@ -8,7 +8,6 @@ require 'maxmind/geoip2/model/city'
 require 'maxmind/geoip2/model/country'
 require 'maxmind/geoip2/model/insights'
 require 'resolv'
-require "rubygems"
 
 module MaxMind
   module GeoIP2
@@ -246,8 +245,8 @@ module MaxMind
       end
 
       def make_http_client
-        client_version = Gem::Specification::load("maxmind-geoip2.gemspec").version.version
-        httplib_version = Gem.loaded_specs["http"].version
+        client_version = Gem::Specification.load('maxmind-geoip2.gemspec').version.version
+        httplib_version = Gem.loaded_specs['http'].version
 
         headers = HTTP.basic_auth(user: @account_id, pass: @license_key)
                       .headers(
