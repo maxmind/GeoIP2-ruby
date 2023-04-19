@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.1 (2023-04-19)
+
+* `MaxMind::GeoIP2::Client` sets additional info in it's http client
+  user-agent.
+
 ## 1.2.0
 
 * `MaxMind::GeoIP2::Client` now validates the IP address before making a
