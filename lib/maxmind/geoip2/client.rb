@@ -4,6 +4,7 @@ require 'connection_pool'
 require 'http'
 require 'json'
 require 'maxmind/geoip2/errors'
+require 'maxmind/geoip2/version'
 require 'maxmind/geoip2/model/city'
 require 'maxmind/geoip2/model/country'
 require 'maxmind/geoip2/model/insights'
@@ -248,8 +249,9 @@ module MaxMind
         headers = HTTP.basic_auth(user: @account_id, pass: @license_key)
                       .headers(
                         accept: 'application/json',
-                        user_agent: 'MaxMind-GeoIP2-ruby',
+                        user_agent: "MaxMind-GeoIP2-ruby/#{VERSION} ruby/#{RUBY_VERSION} http/#{HTTP::VERSION}"
                       )
+
         timeout = @timeout > 0 ? headers.timeout(@timeout) : headers
 
         proxy = timeout
