@@ -1,11 +1,16 @@
 # frozen_string_literal: true
 
+lib = File.expand_path('lib', __dir__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require 'maxmind/geoip2/version'
+
 Gem::Specification.new do |s|
   s.authors     = ['William Storey']
   s.files       = Dir['**/*']
   s.name        = 'maxmind-geoip2'
   s.summary     = 'A gem for interacting with the GeoIP2 webservices and databases.'
-  s.version     = '1.1.0'
+  s.version     = MaxMind::GeoIP2::VERSION
 
   s.description = 'A gem for interacting with the GeoIP2 webservices and databases. MaxMind provides geolocation data as downloadable databases as well as through a webservice.'
   s.email = 'support@maxmind.com'
