@@ -1,14 +1,11 @@
 # Changelog
 
-## 1.2.1 (2023-04-19)
-
-* `MaxMind::GeoIP2::Client` sets additional info in it's http client
-  user-agent.
-
 ## 1.2.0
 
 * `MaxMind::GeoIP2::Client` now validates the IP address before making a
   request to the web service.
+* `MaxMind::GeoIP2::Client` now includes the version of Ruby, the version
+  of the HTTP client library, and its own version in the User-Agent header.
 
 ## 1.1.0 (2021-11-18)
 

@@ -4,6 +4,7 @@ require 'connection_pool'
 require 'http'
 require 'json'
 require 'maxmind/geoip2/errors'
+require 'maxmind/geoip2/version'
 require 'maxmind/geoip2/model/city'
 require 'maxmind/geoip2/model/country'
 require 'maxmind/geoip2/model/insights'
@@ -245,13 +246,10 @@ module MaxMind
       end
 
       def make_http_client
-        client_version = Gem::Specification.load('maxmind-geoip2.gemspec').version.version
-        httplib_version = Gem.loaded_specs['http'].version
-
         headers = HTTP.basic_auth(user: @account_id, pass: @license_key)
                       .headers(
                         accept: 'application/json',
-                        user_agent: "MaxMind-GeoIP2-ruby/#{client_version} ruby/#{RUBY_VERSION} httplib/#{httplib_version}"
+                        user_agent: "MaxMind-GeoIP2-ruby/#{VERSION} ruby/#{RUBY_VERSION} http/#{HTTP::VERSION}"
                       )
 
         timeout = @timeout > 0 ? headers.timeout(@timeout) : headers
