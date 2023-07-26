@@ -42,8 +42,9 @@ module MaxMind
         end
 
         # The connection type may take the following  values: "Dialup",
-        # "Cable/DSL", "Corporate", "Cellular". Additional values may be added in
-        # the future. This attribute is only available in the Enterprise database.
+        # "Cable/DSL", "Corporate", "Cellular", and "Satellite". Additional
+        # values may be added in # the future. This attribute is only available
+        # in the Enterprise database.
         #
         # @return [String, nil]
         def connection_type

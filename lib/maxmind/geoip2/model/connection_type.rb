@@ -7,8 +7,9 @@ module MaxMind
     module Model
       # Model class for the GeoIP2 Connection Type database.
       class ConnectionType < Abstract
-        # The connection type may take the following values: "Dialup", "Cable/DSL",
-        # "Corporate", "Cellular". Additional values may be added in the future.
+        # The connection type may take the following values: "Dialup",
+        # "Cable/DSL", "Corporate", "Cellular", and "Satellite". Additional
+        # values may be added in the future.
         #
         # @return [String, nil]
         def connection_type
