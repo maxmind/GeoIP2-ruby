@@ -1,5 +1,11 @@
 name: Run rubocop
-on: [push, pull_request]
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '3 22 * * SUN'
+
 jobs:
   rubocop:
     runs-on: ubuntu-latest
