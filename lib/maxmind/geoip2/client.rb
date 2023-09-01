@@ -73,8 +73,10 @@ module MaxMind
       #   property from most preferred to least preferred.
       #
       # @param host [String] the host to use when querying the web service. Set
-      #   this to "geolite.info" to use the GeoLite2 web service instead of
-      #   the GeoIP2 web service.
+      #   this to "geolite.info" to use the GeoLite2 web service instead of the
+      #   GeoIP2 web service. Set this to "sandbox.maxmind.com" to use the
+      #   Sandbox environment. The sandbox allows you to experiment with the
+      #   API without affecting your production data.
       #
       # @param timeout [Integer] the number of seconds to wait for a request
       #   before timing out. If 0, no timeout is set.

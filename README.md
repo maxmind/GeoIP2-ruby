@@ -231,6 +231,10 @@ client = MaxMind::GeoIP2::Client.new(
   # To use the GeoLite2 web service instead of the GeoIP2 web service, set
   # the host parameter to "geolite.info":
   # host: 'geolite.info',
+
+  # To use the Sandbox GeoIP2 web service instead of the production GeoIP2
+  # web service, set the host parameter to "sandbox.maxmind.com":
+  # host: 'sandbox.maxmind.com',
 )
 
 # Replace "city" with the method corresponding to the web service that
