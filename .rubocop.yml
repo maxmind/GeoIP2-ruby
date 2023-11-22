@@ -36,9 +36,8 @@ Style/NegatedIf:
 Style/IfUnlessModifier:
     Enabled: false
 
-# This should only be enabled when we are on Ruby 2.5+.
 Style/HashTransformKeys:
-    Enabled: false
+    Enabled: true
 
 Gemspec/DevelopmentDependencies:
   Enabled: false
