@@ -119,7 +119,7 @@ class ReaderTest < Minitest::Test
     ip = '1.0.1.1'
     record = reader.connection_type(ip)
 
-    assert_equal('Cable/DSL', record.connection_type)
+    assert_equal('Cellular', record.connection_type)
     assert_equal(ip, record.ip_address)
     assert_equal('1.0.1.0/24', record.network)
 
