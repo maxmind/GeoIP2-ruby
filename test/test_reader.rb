@@ -97,6 +97,12 @@ class ReaderTest < Minitest::Test
       assert_equal('WA', record.most_specific_subdivision.iso_code)
     )
 
+    # This IP has is_anycast.
+
+    ip_address = '214.1.1.0'
+    record = reader.city(ip_address)
+    assert_equal(true, record.traits.anycast?)
+
     reader.close
   end
 
@@ -209,6 +215,12 @@ class ReaderTest < Minitest::Test
     assert_equal('81.2.69.163', record.traits.ip_address)
     assert_equal('81.2.69.160/27', record.traits.network)
 
+    # This IP has is_anycast.
+
+    ip_address = '214.1.1.0'
+    record = reader.country(ip_address)
+    assert_equal(true, record.traits.anycast?)
+
     assert_raises(NoMethodError) { record.foo }
     reader.close
   end
@@ -273,6 +285,12 @@ class ReaderTest < Minitest::Test
 
     assert_equal('310', record.traits.mobile_country_code)
     assert_equal('004', record.traits.mobile_network_code)
+
+    # This IP has is_anycast.
+
+    ip_address = '214.1.1.0'
+    record = reader.enterprise(ip_address)
+    assert_equal(true, record.traits.anycast?)
 
     reader.close
   end
