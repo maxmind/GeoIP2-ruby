@@ -6,6 +6,11 @@
   request to the web service.
 * `MaxMind::GeoIP2::Client` now includes the version of Ruby, the version
   of the HTTP client library, and its own version in the User-Agent header.
+* The `anycast?` method was added to `MaxMind::GeoIP2::Record::Traits`.
+  This returns `true` if the IP address belongs to an [anycast
+  network](https://en.wikipedia.org/wiki/Anycast anycast network). This is
+  available for the GeoIP2 Country, City Plus, and Insights web services
+  and the GeoIP2 Country, City, and Enterprise databases.
 
 ## 1.1.0 (2021-11-18)
 

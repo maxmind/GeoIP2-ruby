@@ -22,6 +22,7 @@ class ClientTest < Minitest::Test
     },
     'traits' => {
       'ip_address' => '1.2.3.4',
+      'is_anycast' => true,
       'network' => '1.2.3.0/24',
     },
   }.freeze
@@ -42,6 +43,7 @@ class ClientTest < Minitest::Test
     },
     'traits' => {
       'ip_address' => '1.2.3.40',
+      'is_anycast' => true,
       'is_residential_proxy' => true,
       'network' => '1.2.3.0/24',
       'static_ip_score' => 1.3,
@@ -73,6 +75,7 @@ class ClientTest < Minitest::Test
 
     assert_equal(false, record.registered_country.in_european_union?)
 
+    assert_equal(true, record.traits.anycast?)
     assert_equal('1.2.3.0/24', record.traits.network)
   end
 
@@ -83,6 +86,7 @@ class ClientTest < Minitest::Test
 
     assert_equal(42, record.continent.geoname_id)
 
+    assert_equal(true, record.traits.anycast?)
     assert_equal(true, record.traits.residential_proxy?)
     assert_equal('1.2.3.0/24', record.traits.network)
     assert_equal(1.3, record.traits.static_ip_score)

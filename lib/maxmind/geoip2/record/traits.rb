@@ -43,8 +43,9 @@ module MaxMind
 
         # The connection type may take the following  values: "Dialup",
         # "Cable/DSL", "Corporate", "Cellular", and "Satellite". Additional
-        # values may be added in # the future. This attribute is only available
-        # from the City Plus and Insights web services and the Enterprise database.
+        # values may be added in the future. This attribute is only available
+        # from the City Plus and Insights web services and the Enterprise
+        # database.
         #
         # @return [String, nil]
         def connection_type
@@ -88,6 +89,18 @@ module MaxMind
         # @return [Boolean]
         def anonymous_vpn?
           get('is_anonymous_vpn')
+        end
+
+        # This is true if the IP address belongs to an
+        # {https://en.wikipedia.org/wiki/Anycast anycast network}.
+        #
+        # This property is only available from the Country, City Plus, and
+        # Insights web services and the GeoIP2 Country, City, and Enterprise
+        # databases.
+        #
+        # @return [Boolean]
+        def anycast?
+          get('is_anycast')
         end
 
         # This is true if the IP address belongs to a hosting or VPN provider (see
