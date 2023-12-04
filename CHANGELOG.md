@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.2.0
+## 1.2.0 (2023-12-04)
 
 * `MaxMind::GeoIP2::Client` now validates the IP address before making a
   request to the web service.
