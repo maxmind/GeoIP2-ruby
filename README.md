@@ -332,7 +332,7 @@ client API, please see [our support page](https://www.maxmind.com/en/support).
 
 ## Requirements
 
-This code requires Ruby version 2.5 or higher.
+This code requires Ruby version 2.7 or higher.
 
 ## Contributing
 
@@ -345,7 +345,7 @@ This library uses [Semantic Versioning](https://semver.org/).
 
 ## Copyright and License
 
-This software is Copyright (c) 2020-2023 by MaxMind, Inc.
+This software is Copyright (c) 2020-2024 by MaxMind, Inc.
 
 This is free software, licensed under the [Apache License, Version
 2.0](LICENSE-APACHE) or the [MIT License](LICENSE-MIT), at your option.
