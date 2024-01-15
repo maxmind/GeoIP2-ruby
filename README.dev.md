@@ -1,4 +1,4 @@
 # How to release
 
 See
-[here](https://github.com/maxmind/MaxMind-DB-Reader-ruby/blob/main/README.dev.md).
+[here](https://github.com/maxmind/minfraud-api-ruby/blob/main/README.dev.md).
