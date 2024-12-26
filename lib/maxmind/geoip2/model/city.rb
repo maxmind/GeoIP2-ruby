@@ -46,7 +46,7 @@ module MaxMind
 
         # @!visibility private
         def initialize(record, locales)
-          super(record, locales)
+          super
           @city = MaxMind::GeoIP2::Record::City.new(record['city'], locales)
           @location = MaxMind::GeoIP2::Record::Location.new(record['location'])
           @postal = MaxMind::GeoIP2::Record::Postal.new(record['postal'])
