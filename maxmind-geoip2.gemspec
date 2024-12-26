@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
     'rubygems_mfa_required' => 'true',
     'source_code_uri' => 'https://github.com/maxmind/GeoIP2-ruby',
   }
-  s.required_ruby_version = '>= 2.7.0'
+  s.required_ruby_version = '>= 3.0'
 
   s.add_runtime_dependency 'connection_pool', ['~> 2.2']
   s.add_runtime_dependency 'http', '>= 4.3', '< 6.0'

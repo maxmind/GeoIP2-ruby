@@ -2,8 +2,8 @@
 
 ## 1.3.0
 
-* Ruby 2.5 and 2.6 are no longer supported. If you're using one of these
-  versions, please use version 1.2.0 of this gem.
+* Ruby 3.0+ is now required. If you're using Ruby 2.5, 2.6, or 2.7, please
+  use version 1.2.0 of this gem.
 
 ## 1.2.0 (2023-12-04)
 
