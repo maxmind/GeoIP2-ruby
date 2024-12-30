@@ -12,7 +12,7 @@ module MaxMind
       class Traits < Abstract
         # @!visibility private
         def initialize(record)
-          super(record)
+          super
           if record && !record.key?('network') && record.key?('ip_address') &&
              record.key?('prefix_length')
             ip = IPAddr.new(record['ip_address']).mask(record['prefix_length'])
