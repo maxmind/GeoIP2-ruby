@@ -30,8 +30,12 @@ jobs:
         with:
           submodules: true
           persist-credentials: false
-      - uses: ruby/setup-ruby@v1
+
+      # zizmor complains that 'v1' is a ref that can be provided by both the branch and tag namespaces.
+      # specify that we want the v1 branch.
+      - uses: ruby/setup-ruby@refs/heads/v1
         with:
           ruby-version: ${{ matrix.version }}
+
       - run: bundle install
       - run: bundle exec rake -t test
