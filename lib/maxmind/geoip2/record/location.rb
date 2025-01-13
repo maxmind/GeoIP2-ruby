@@ -46,11 +46,11 @@ module MaxMind
           get('longitude')
         end
 
-        # The metro code of the location if the location is in the US. MaxMind
-        # returns the same metro codes as the Google AdWords API. See
-        # https://developers.google.com/adwords/api/docs/appendix/cities-DMAregions.
+        # The metro code is a no-longer-maintained code for targeting
+        # advertisements in Google.
         #
         # @return [Integer, nil]
+        # @deprecated Code values are no longer maintained.
         def metro_code
           get('metro_code')
         end
