@@ -6,6 +6,8 @@ on:
   schedule:
     - cron: '3 22 * * SUN'
 
+permissions: {}
+
 jobs:
   rubocop:
     runs-on: ubuntu-latest
