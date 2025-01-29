@@ -6,6 +6,8 @@ on:
   schedule:
     - cron: '3 23 * * SUN'
 
+permissions: {}
+
 jobs:
   test:
     runs-on: ${{ matrix.os }}
