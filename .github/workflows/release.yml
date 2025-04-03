@@ -20,6 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          submodules: true
           persist-credentials: false
 
       # zizmor complains that 'v1' is a ref that can be provided by both the branch and tag namespaces.
@@ -28,6 +29,8 @@ jobs:
         uses: ruby/setup-ruby@refs/heads/v1
         with:
           ruby-version: ruby
+
+      - run: bundle install
 
       # zizmor complains that 'v1' is a ref that can be provided by both the branch and tag namespaces.
       # specify that we want the v1 branch.
