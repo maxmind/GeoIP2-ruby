@@ -86,7 +86,7 @@ module MaxMind
       # rubocop:enable Metrics/CyclomaticComplexity
       # rubocop:enable Metrics/PerceivedComplexity
 
-      # Look up the IP address in the database.
+      # Look up the IP address in the Anonymous IP database.
       #
       # @param ip_address [String] a string in the standard notation. It may be
       #   IPv4 or IPv6.
