@@ -37,6 +37,29 @@ class ReaderTest < Minitest::Test
     reader.close
   end
 
+  def test_anonymous_plus
+    reader = MaxMind::GeoIP2::Reader.new(
+      'test/data/test-data/GeoIP-Anonymous-Plus-Test.mmdb',
+    )
+    ip = '1.2.0.1'
+    record = reader.anonymous_plus(ip)
+
+    assert_equal(30, record.anonymizer_confidence)
+    assert_equal(true, record.anonymous?)
+    assert_equal(true, record.anonymous_vpn?)
+    assert_equal(false, record.hosting_provider?)
+    assert_equal(Date.new(2025, 4, 14), record.network_last_seen)
+    assert_equal('foo', record.provider_name)
+    assert_equal(false, record.public_proxy?)
+    assert_equal(false, record.residential_proxy?)
+    assert_equal(false, record.tor_exit_node?)
+
+    assert_equal(ip, record.ip_address)
+    assert_equal('1.2.0.1/32', record.network)
+
+    reader.close
+  end
+
   def test_asn
     reader = MaxMind::GeoIP2::Reader.new(
       'test/data/test-data/GeoLite2-ASN-Test.mmdb',
