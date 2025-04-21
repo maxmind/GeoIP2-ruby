@@ -41,4 +41,4 @@ Style/HashTransformKeys:
     Enabled: true
 
 Gemspec/DevelopmentDependencies:
-  Enabled: false
+    Enabled: false
