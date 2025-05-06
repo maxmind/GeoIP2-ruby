@@ -3,6 +3,7 @@
 require 'maxmind/db'
 require 'maxmind/geoip2/errors'
 require 'maxmind/geoip2/model/anonymous_ip'
+require 'maxmind/geoip2/model/anonymous_plus'
 require 'maxmind/geoip2/model/asn'
 require 'maxmind/geoip2/model/city'
 require 'maxmind/geoip2/model/connection_type'
@@ -86,7 +87,7 @@ module MaxMind
       # rubocop:enable Metrics/CyclomaticComplexity
       # rubocop:enable Metrics/PerceivedComplexity
 
-      # Look up the IP address in the database.
+      # Look up the IP address in the Anonymous IP database.
       #
       # @param ip_address [String] a string in the standard notation. It may be
       #   IPv4 or IPv6.
@@ -106,6 +107,30 @@ module MaxMind
           Model::AnonymousIP,
           'anonymous_ip',
           'GeoIP2-Anonymous-IP',
+          ip_address,
+        )
+      end
+
+      # Look up the IP address in the Anonymous Plus database.
+      #
+      # @param ip_address [String] a string in the standard notation. It may be
+      #   IPv4 or IPv6.
+      #
+      # @return [MaxMind::GeoIP2::Model::AnonymousPlus]
+      #
+      # @raise [ArgumentError] if used against a non-Anonymous Plus database
+      #   or if you attempt to look up an IPv6 address in an IPv4 only database.
+      #
+      # @raise [AddressNotFoundError] if the IP address is not found in the
+      #   database.
+      #
+      # @raise [MaxMind::DB::InvalidDatabaseError] if the database appears
+      #   corrupt.
+      def anonymous_plus(ip_address)
+        flat_model_for(
+          Model::AnonymousPlus,
+          'anonymous_plus',
+          'GeoIP-Anonymous-Plus',
           ip_address,
         )
       end

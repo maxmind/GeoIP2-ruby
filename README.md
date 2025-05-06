@@ -133,6 +133,21 @@ record = reader.anonymous_ip('128.101.101.101')
 puts "Anonymous" if record.is_anonymous
 ```
 
+### Anonymous Plus Example
+
+```ruby
+require 'maxmind/geoip2'
+
+# This creates the Reader object which should be reused across lookups.
+reader = MaxMind::GeoIP2::Reader.new(
+  database: '/usr/share/GeoIP/GeoIP-Anonymous-Plus.mmdb',
+)
+
+record = reader.anonymous_plus('128.101.101.101')
+
+puts record.anonymizer_confidence # 30
+```
+
 ### ASN Example
 
 ```ruby

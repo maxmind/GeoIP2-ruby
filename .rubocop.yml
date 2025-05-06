@@ -1,4 +1,5 @@
-require: rubocop-performance
+plugins:
+    - rubocop-performance
 
 AllCops:
     TargetRubyVersion: '3.0'
@@ -40,4 +41,4 @@ Style/HashTransformKeys:
     Enabled: true
 
 Gemspec/DevelopmentDependencies:
-  Enabled: false
+    Enabled: false

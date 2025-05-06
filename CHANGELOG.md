@@ -2,6 +2,9 @@
 
 ## 1.3.0
 
+* Support for the GeoIP Anonymous Plus database has been added. To do a
+  lookup in this database, use the `anonymous_plus` method on
+  `MaxMind::GeoIP2::Reader`.
 * Ruby 3.0+ is now required. If you're using Ruby 2.5, 2.6, or 2.7, please
   use version 1.2.0 of this gem.
 * Deprecated `metro_code` on `MaxMind::GeoIP2::Record::Location`. The code
