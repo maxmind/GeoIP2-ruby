@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.3.0
+## 1.3.0 (2025-05-06)
 
 * Support for the GeoIP Anonymous Plus database has been added. To do a
   lookup in this database, use the `anonymous_plus` method on
