@@ -143,7 +143,7 @@ reader = MaxMind::GeoIP2::Reader.new(
   database: '/usr/share/GeoIP/GeoIP-Anonymous-Plus.mmdb',
 )
 
-record = reader.anonymous_ip('128.101.101.101')
+record = reader.anonymous_plus('128.101.101.101')
 
 puts record.anonymizer_confidence # 30
 ```
