@@ -26,7 +26,7 @@ jobs:
       # zizmor complains that 'v1' is a ref that can be provided by both the branch and tag namespaces.
       # specify that we want the v1 branch.
       - name: Set up Ruby
-        uses: ruby/setup-ruby@refs/heads/v1
+        uses: ruby/setup-ruby@bb0f760b6c925183520ee0bcc9c4a432a7c8c3c6 # 1.241.0
         with:
           ruby-version: ruby
 
@@ -34,4 +34,4 @@ jobs:
 
       # zizmor complains that 'v1' is a ref that can be provided by both the branch and tag namespaces.
       # specify that we want the v1 branch.
-      - uses: rubygems/release-gem@refs/heads/v1
+      - uses: rubygems/release-gem@a25424ba2ba8b387abc8ef40807c2c85b96cbe32 # 1.1.1
