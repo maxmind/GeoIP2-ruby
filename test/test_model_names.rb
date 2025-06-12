@@ -29,18 +29,21 @@ class ModelNameTest < Minitest::Test
 
   def test_fallback
     model = MaxMind::GeoIP2::Model::Country.new(RAW, %w[ru zh-CN en])
+
     assert_equal('北美洲', model.continent.name)
     assert_equal('объединяет государства', model.country.name)
   end
 
   def test_two_fallbacks
     model = MaxMind::GeoIP2::Model::Country.new(RAW, %w[ru jp])
+
     assert_nil(model.continent.name)
     assert_equal('объединяет государства', model.country.name)
   end
 
   def test_no_fallbacks
     model = MaxMind::GeoIP2::Model::Country.new(RAW, %w[jp])
+
     assert_nil(model.continent.name)
     assert_nil(model.country.name)
   end

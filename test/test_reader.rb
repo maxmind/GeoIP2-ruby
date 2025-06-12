@@ -13,12 +13,12 @@ class ReaderTest < Minitest::Test
     ip = '1.2.0.1'
     record = reader.anonymous_ip(ip)
 
-    assert_equal(true, record.anonymous?)
-    assert_equal(true, record.anonymous_vpn?)
-    assert_equal(false, record.hosting_provider?)
-    assert_equal(false, record.public_proxy?)
-    assert_equal(false, record.residential_proxy?)
-    assert_equal(false, record.tor_exit_node?)
+    assert(record.anonymous?)
+    assert(record.anonymous_vpn?)
+    refute(record.hosting_provider?)
+    refute(record.public_proxy?)
+    refute(record.residential_proxy?)
+    refute(record.tor_exit_node?)
     assert_equal(ip, record.ip_address)
     assert_equal('1.2.0.0/16', record.network)
 
@@ -32,7 +32,7 @@ class ReaderTest < Minitest::Test
     ip = '81.2.69.1'
     record = reader.anonymous_ip(ip)
 
-    assert_equal(true, record.residential_proxy?)
+    assert(record.residential_proxy?)
 
     reader.close
   end
@@ -45,14 +45,14 @@ class ReaderTest < Minitest::Test
     record = reader.anonymous_plus(ip)
 
     assert_equal(30, record.anonymizer_confidence)
-    assert_equal(true, record.anonymous?)
-    assert_equal(true, record.anonymous_vpn?)
-    assert_equal(false, record.hosting_provider?)
+    assert(record.anonymous?)
+    assert(record.anonymous_vpn?)
+    refute(record.hosting_provider?)
     assert_equal(Date.new(2025, 4, 14), record.network_last_seen)
     assert_equal('foo', record.provider_name)
-    assert_equal(false, record.public_proxy?)
-    assert_equal(false, record.residential_proxy?)
-    assert_equal(false, record.tor_exit_node?)
+    refute(record.public_proxy?)
+    refute(record.residential_proxy?)
+    refute(record.tor_exit_node?)
 
     assert_equal(ip, record.ip_address)
     assert_equal('1.2.0.1/32', record.network)
@@ -89,8 +89,8 @@ class ReaderTest < Minitest::Test
     assert_nil(record.city.confidence)
 
     assert_equal(100, record.location.accuracy_radius)
-    assert_equal(51.75, record.location.latitude)
-    assert_equal(-1.25, record.location.longitude)
+    assert_in_delta(51.75, record.location.latitude)
+    assert_in_delta(-1.25, record.location.longitude)
     assert_equal('Europe/London', record.location.time_zone)
 
     assert_equal(2, record.subdivisions.size)
@@ -117,14 +117,16 @@ class ReaderTest < Minitest::Test
         'zh-CN' => '华盛顿州',
       },
       record.subdivisions[0].names,
-      assert_equal('WA', record.most_specific_subdivision.iso_code)
     )
+
+    assert_equal('WA', record.most_specific_subdivision.iso_code)
 
     # This IP has is_anycast.
 
     ip_address = '214.1.1.0'
     record = reader.city(ip_address)
-    assert_equal(true, record.traits.anycast?)
+
+    assert(record.traits.anycast?)
 
     reader.close
   end
@@ -135,7 +137,7 @@ class ReaderTest < Minitest::Test
     )
     record = reader.city('2001:218::')
 
-    assert_equal([], record.subdivisions)
+    assert_empty(record.subdivisions)
     assert_nil(record.most_specific_subdivision)
 
     reader.close
@@ -179,7 +181,7 @@ class ReaderTest < Minitest::Test
     assert_equal('Europe', record.continent.name)
 
     assert_equal(2_635_167, record.country.geoname_id)
-    assert_equal(false, record.country.in_european_union?)
+    refute(record.country.in_european_union?)
     assert_equal('GB', record.country.iso_code)
     assert_equal(
       {
@@ -197,7 +199,7 @@ class ReaderTest < Minitest::Test
     assert_equal('United Kingdom', record.country.name)
 
     assert_equal(3_017_382, record.registered_country.geoname_id)
-    assert_equal(true, record.registered_country.in_european_union?)
+    assert(record.registered_country.in_european_union?)
     assert_equal('FR', record.registered_country.iso_code)
     assert_equal(
       {
@@ -235,6 +237,7 @@ class ReaderTest < Minitest::Test
     assert_equal('military', record.represented_country.type)
 
     record = reader.country('81.2.69.163')
+
     assert_equal('81.2.69.163', record.traits.ip_address)
     assert_equal('81.2.69.160/27', record.traits.network)
 
@@ -242,7 +245,8 @@ class ReaderTest < Minitest::Test
 
     ip_address = '214.1.1.0'
     record = reader.country(ip_address)
-    assert_equal(true, record.traits.anycast?)
+
+    assert(record.traits.anycast?)
 
     assert_raises(NoMethodError) { record.foo }
     reader.close
@@ -253,7 +257,8 @@ class ReaderTest < Minitest::Test
       'test/data/test-data/GeoIP2-Country-Test.mmdb',
     )
     record = reader.country('74.209.24.0')
-    assert_equal(false, record.country.in_european_union?)
+
+    refute(record.country.in_european_union?)
 
     reader.close
   end
@@ -289,14 +294,14 @@ class ReaderTest < Minitest::Test
     assert_equal(11, record.city.confidence)
     assert_equal(99, record.country.confidence)
     assert_equal(6_252_001, record.country.geoname_id)
-    assert_equal(false, record.country.in_european_union?)
+    refute(record.country.in_european_union?)
 
     assert_equal(27, record.location.accuracy_radius)
 
-    assert_equal(false, record.registered_country.in_european_union?)
+    refute(record.registered_country.in_european_union?)
 
     assert_equal('Cable/DSL', record.traits.connection_type)
-    assert_equal(true, record.traits.legitimate_proxy?)
+    assert(record.traits.legitimate_proxy?)
 
     assert_equal(ip_address, record.traits.ip_address)
     assert_equal('74.209.16.0/20', record.traits.network)
@@ -313,7 +318,8 @@ class ReaderTest < Minitest::Test
 
     ip_address = '214.1.1.0'
     record = reader.enterprise(ip_address)
-    assert_equal(true, record.traits.anycast?)
+
+    assert(record.traits.anycast?)
 
     reader.close
   end
@@ -352,7 +358,7 @@ class ReaderTest < Minitest::Test
     assert_equal('2.125.160.216', record.traits.ip_address)
     assert_equal('2.125.160.216/29', record.traits.network)
     assert_nil(record.traits.autonomous_system_number)
-    assert_equal(false, record.traits.anonymous?)
+    refute(record.traits.anonymous?)
 
     reader.close
   end
@@ -438,6 +444,7 @@ class ReaderTest < Minitest::Test
         "test/data/test-data/GeoIP2-#{t['file']}-Test.mmdb",
       )
       record = reader.send(t['method'], '81.2.69.160')
+
       assert_equal('United Kingdom', record.country.name)
       reader.close
     end
@@ -450,6 +457,7 @@ class ReaderTest < Minitest::Test
         %w[xx ru pt-BR es en],
       )
       record = reader.send(t['method'], '81.2.69.160')
+
       assert_equal('Великобритания', record.country.name)
       reader.close
     end
@@ -461,6 +469,7 @@ class ReaderTest < Minitest::Test
         "test/data/test-data/GeoIP2-#{t['file']}-Test.mmdb",
       )
       record = reader.send(t['method'], '81.2.69.163')
+
       assert_equal('81.2.69.163', record.traits.ip_address)
       assert_equal('81.2.69.160/27', record.traits.network)
       reader.close
@@ -473,8 +482,9 @@ class ReaderTest < Minitest::Test
         "test/data/test-data/GeoIP2-#{t['file']}-Test.mmdb",
       )
       record = reader.send(t['method'], '81.2.69.160')
-      assert_equal(false, record.country.in_european_union?)
-      assert_equal(false, record.registered_country.in_european_union?)
+
+      refute(record.country.in_european_union?)
+      refute(record.registered_country.in_european_union?)
       reader.close
     end
   end
@@ -524,6 +534,7 @@ class ReaderTest < Minitest::Test
     reader = MaxMind::GeoIP2::Reader.new(
       'test/data/test-data/GeoIP2-City-Test.mmdb',
     )
+
     assert_equal('GeoIP2-City', reader.metadata.database_type)
     reader.close
   end
@@ -533,6 +544,7 @@ class ReaderTest < Minitest::Test
       database: 'test/data/test-data/GeoIP2-Country-Test.mmdb',
     )
     record = reader.country('81.2.69.160')
+
     assert_equal('United Kingdom', record.country.name)
     reader.close
   end
@@ -544,6 +556,7 @@ class ReaderTest < Minitest::Test
       mode: MaxMind::DB::MODE_MEMORY,
     )
     record = reader.country('81.2.69.160')
+
     assert_equal('Великобритания', record.country.name)
     reader.close
   end
@@ -569,6 +582,7 @@ class ReaderTest < Minitest::Test
       mode: MaxMind::DB::MODE_MEMORY,
     )
     record = reader.country('81.2.69.160')
+
     assert_equal('Великобритания', record.country.name)
     reader.close
   end

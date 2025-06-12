@@ -1,4 +1,5 @@
 plugins:
+    - rubocop-minitest
     - rubocop-performance
     - rubocop-rake
 
@@ -42,4 +43,14 @@ Style/HashTransformKeys:
     Enabled: true
 
 Gemspec/DevelopmentDependencies:
+    Enabled: false
+
+# Sometimes it makes sense to have lots of assertions.
+Minitest/MultipleAssertions:
+    Enabled: false
+# This seems less clear to me.
+Minitest/RefutePredicate:
+    Enabled: false
+# This seems less clear to me.
+Minitest/AssertPredicate:
     Enabled: false
