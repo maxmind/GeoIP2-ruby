@@ -66,16 +66,16 @@ class ClientTest < Minitest::Test
     assert_equal('North America', record.continent.name)
 
     assert_equal(1, record.country.geoname_id)
-    assert_equal(false, record.country.in_european_union?)
+    refute(record.country.in_european_union?)
     assert_equal('US', record.country.iso_code)
     assert_equal({ 'en' => 'United States of America' }, record.country.names)
     assert_equal('United States of America', record.country.name)
 
     assert_equal(11, record.maxmind.queries_remaining)
 
-    assert_equal(false, record.registered_country.in_european_union?)
+    refute(record.registered_country.in_european_union?)
 
-    assert_equal(true, record.traits.anycast?)
+    assert(record.traits.anycast?)
     assert_equal('1.2.3.0/24', record.traits.network)
   end
 
@@ -86,10 +86,10 @@ class ClientTest < Minitest::Test
 
     assert_equal(42, record.continent.geoname_id)
 
-    assert_equal(true, record.traits.anycast?)
-    assert_equal(true, record.traits.residential_proxy?)
+    assert(record.traits.anycast?)
+    assert(record.traits.residential_proxy?)
     assert_equal('1.2.3.0/24', record.traits.network)
-    assert_equal(1.3, record.traits.static_ip_score)
+    assert_in_delta(1.3, record.traits.static_ip_score)
     assert_equal(2, record.traits.user_count)
   end
 

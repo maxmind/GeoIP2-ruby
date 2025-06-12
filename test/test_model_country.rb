@@ -29,20 +29,18 @@ class CountryModelTest < Minitest::Test
 
   def test_objects
     model = MaxMind::GeoIP2::Model::Country.new(RAW, ['en'])
-    assert_equal(MaxMind::GeoIP2::Model::Country, model.class)
-    assert_equal(MaxMind::GeoIP2::Record::Continent, model.continent.class)
-    assert_equal(MaxMind::GeoIP2::Record::Country, model.country.class)
-    assert_equal(
-      MaxMind::GeoIP2::Record::Country,
-      model.registered_country.class,
+
+    assert_instance_of(MaxMind::GeoIP2::Model::Country, model)
+    assert_instance_of(MaxMind::GeoIP2::Record::Continent, model.continent)
+    assert_instance_of(MaxMind::GeoIP2::Record::Country, model.country)
+    assert_instance_of(
+      MaxMind::GeoIP2::Record::Country, model.registered_country,
     )
-    assert_equal(
-      MaxMind::GeoIP2::Record::RepresentedCountry,
-      model.represented_country.class,
+    assert_instance_of(
+      MaxMind::GeoIP2::Record::RepresentedCountry, model.represented_country,
     )
-    assert_equal(
-      MaxMind::GeoIP2::Record::Traits,
-      model.traits.class,
+    assert_instance_of(
+      MaxMind::GeoIP2::Record::Traits, model.traits,
     )
   end
 
@@ -55,14 +53,14 @@ class CountryModelTest < Minitest::Test
     assert_equal('North America', model.continent.name)
 
     assert_equal(1, model.country.geoname_id)
-    assert_equal(false, model.country.in_european_union?)
+    refute(model.country.in_european_union?)
     assert_equal('US', model.country.iso_code)
     assert_equal({ 'en' => 'United States of America' }, model.country.names)
     assert_equal('United States of America', model.country.name)
     assert_nil(model.country.confidence)
 
     assert_equal(2, model.registered_country.geoname_id)
-    assert_equal(true, model.registered_country.in_european_union?)
+    assert(model.registered_country.in_european_union?)
     assert_equal('DE', model.registered_country.iso_code)
     assert_equal({ 'en' => 'Germany' }, model.registered_country.names)
     assert_equal('Germany', model.registered_country.name)
@@ -91,6 +89,7 @@ class CountryModelTest < Minitest::Test
       },
       ['en'],
     )
+
     assert_equal(42, model.continent.geoname_id)
   end
 end

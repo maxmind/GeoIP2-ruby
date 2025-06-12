@@ -33,6 +33,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'minitest'
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rubocop'
+  s.add_development_dependency 'rubocop-minitest'
   s.add_development_dependency 'rubocop-performance'
+  s.add_development_dependency 'rubocop-rake'
   s.add_development_dependency 'webmock'
 end
