@@ -347,7 +347,7 @@ client API, please see [our support page](https://www.maxmind.com/en/support).
 
 ## Requirements
 
-This code requires Ruby version 3.0 or higher.
+This code requires Ruby version 3.2 or higher.
 
 ## Contributing
 
