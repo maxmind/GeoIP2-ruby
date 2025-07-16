@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.4.0
+
+* Ruby 3.2+ is now required. If you're using Ruby 3.0 or 3.1, please use
+  version 1.3.0 of this gem.
+
 ## 1.3.0 (2025-05-06)
 
 * Support for the GeoIP Anonymous Plus database has been added. To do a
