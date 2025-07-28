@@ -18,7 +18,7 @@ jobs:
 
       # zizmor complains that 'v1' is a ref that can be provided by both the branch and tag namespaces.
       # specify that we want the v1 branch.
-      - uses: ruby/setup-ruby@65937904bcddfb93f8130882d9afa8597c45f3b5 # 1.249.0
+      - uses: ruby/setup-ruby@bb6434c747fa7022e12fa1cae2a0951fcffcff26 # 1.253.0
         with:
           ruby-version: 3.4
 
