@@ -34,4 +34,4 @@ jobs:
 
       # zizmor complains that 'v1' is a ref that can be provided by both the branch and tag namespaces.
       # specify that we want the v1 branch.
-      - uses: rubygems/release-gem@a25424ba2ba8b387abc8ef40807c2c85b96cbe32 # 1.1.1
+      - uses: rubygems/release-gem@1c162a739e8b4cb21a676e97b087e8268d8fc40b # 1.1.2
