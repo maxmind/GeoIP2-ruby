@@ -4,6 +4,20 @@
 
 * Ruby 3.2+ is now required. If you're using Ruby 3.0 or 3.1, please use
   version 1.3.0 of this gem.
+* A new `anonymizer` object has been added to the `MaxMind::GeoIP2::Model::Insights`
+  model. This object indicates whether the IP address is part of an anonymizing
+  network, including VPN confidence scoring, provider name detection, and network
+  last seen date. This is only available from the GeoIP2 Insights web service.
+* A new `ip_risk_snapshot` method has been added to `MaxMind::GeoIP2::Record::Traits`.
+  This field contains the risk associated with the IP address, ranging from 0.01 to
+  99 (a higher score indicates a higher risk). This is only available from the GeoIP2
+  Insights web service.
+* The `anonymous?`, `anonymous_vpn?`, `hosting_provider?`, `public_proxy?`,
+  `residential_proxy?`, and `tor_exit_node?` methods in
+  `MaxMind::GeoIP2::Record::Traits` have been deprecated. Please use the
+  corresponding methods in the `anonymizer` object from the GeoIP2 Insights
+  response instead.
+
 
 ## 1.3.0 (2025-05-06)
 

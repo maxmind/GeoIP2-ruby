@@ -28,6 +28,17 @@ class ClientTest < Minitest::Test
   }.freeze
 
   INSIGHTS = {
+    'anonymizer' => {
+      'confidence' => 85,
+      'is_anonymous' => true,
+      'is_anonymous_vpn' => true,
+      'is_hosting_provider' => false,
+      'is_public_proxy' => false,
+      'is_residential_proxy' => true,
+      'is_tor_exit_node' => false,
+      'network_last_seen' => '2025-10-15',
+      'provider_name' => 'NordVPN',
+    },
     'continent' => {
       'code' => 'NA',
       'geoname_id' => 42,
@@ -43,6 +54,7 @@ class ClientTest < Minitest::Test
     },
     'traits' => {
       'ip_address' => '1.2.3.40',
+      'ip_risk_snapshot' => 45.5,
       'is_anycast' => true,
       'is_residential_proxy' => true,
       'network' => '1.2.3.0/24',
@@ -86,11 +98,24 @@ class ClientTest < Minitest::Test
 
     assert_equal(42, record.continent.geoname_id)
 
+    # Test anonymizer object
+    assert_equal(85, record.anonymizer.confidence)
+    assert(record.anonymizer.anonymous?)
+    assert(record.anonymizer.anonymous_vpn?)
+    refute(record.anonymizer.hosting_provider?)
+    refute(record.anonymizer.public_proxy?)
+    assert(record.anonymizer.residential_proxy?)
+    refute(record.anonymizer.tor_exit_node?)
+    assert_equal(Date.parse('2025-10-15'), record.anonymizer.network_last_seen)
+    assert_equal('NordVPN', record.anonymizer.provider_name)
+
+    # Test traits
     assert(record.traits.anycast?)
     assert(record.traits.residential_proxy?)
     assert_equal('1.2.3.0/24', record.traits.network)
     assert_in_delta(1.3, record.traits.static_ip_score)
     assert_equal(2, record.traits.user_count)
+    assert_in_delta(45.5, record.traits.ip_risk_snapshot)
   end
 
   def test_city

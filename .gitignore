@@ -1,3 +1,33 @@
+# Editor files
 *.swp
+*~
+.DS_Store
+
+# YARD documentation
 /doc
 /.yardoc
+
+# Bundler
+/.bundle
+/vendor/bundle
+
+# Gem build artifacts
+*.gem
+/pkg
+
+# Test coverage
+/coverage
+
+# RuboCop cache
+/.rubocop-*
+
+# IDE/Editor specific
+/.idea
+/.vscode
+*.iml
+
+# Temporary files
+/tmp
+
+# Claude Code
+.claude
