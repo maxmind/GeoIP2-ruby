@@ -76,11 +76,11 @@ module MaxMind
         # This is true if the IP address belongs to any sort of anonymous network.
         # This property is only available from Insights.
         #
-        # This method is deprecated as of version 1.5.0. Use the anonymizer object
+        # This method is deprecated as of version 1.4.0. Use the anonymizer object
         # from the Insights response instead.
         #
         # @return [Boolean]
-        # @deprecated since 1.5.0
+        # @deprecated since 1.4.0
         def anonymous?
           get('is_anonymous')
         end
@@ -90,11 +90,11 @@ module MaxMind
         # associated with them, we will likely only flag their IP ranges using the
         # hosting_provider? property. This property is only available from Insights.
         #
-        # This method is deprecated as of version 1.5.0. Use the anonymizer object
+        # This method is deprecated as of version 1.4.0. Use the anonymizer object
         # from the Insights response instead.
         #
         # @return [Boolean]
-        # @deprecated since 1.5.0
+        # @deprecated since 1.4.0
         def anonymous_vpn?
           get('is_anonymous_vpn')
         end
@@ -115,11 +115,11 @@ module MaxMind
         # description of the anonymous_vpn? property). This property is only
         # available from Insights.
         #
-        # This method is deprecated as of version 1.5.0. Use the anonymizer object
+        # This method is deprecated as of version 1.4.0. Use the anonymizer object
         # from the Insights response instead.
         #
         # @return [Boolean]
-        # @deprecated since 1.5.0
+        # @deprecated since 1.4.0
         def hosting_provider?
           get('is_hosting_provider')
         end
@@ -158,11 +158,11 @@ module MaxMind
         # This is true if the IP address belongs to a public proxy. This property
         # is only available from Insights.
         #
-        # This method is deprecated as of version 1.5.0. Use the anonymizer object
+        # This method is deprecated as of version 1.4.0. Use the anonymizer object
         # from the Insights response instead.
         #
         # @return [Boolean]
-        # @deprecated since 1.5.0
+        # @deprecated since 1.4.0
         def public_proxy?
           get('is_public_proxy')
         end
@@ -171,11 +171,11 @@ module MaxMind
         # and belongs to a residential ISP. This property is only available
         # from Insights.
         #
-        # This method is deprecated as of version 1.5.0. Use the anonymizer object
+        # This method is deprecated as of version 1.4.0. Use the anonymizer object
         # from the Insights response instead.
         #
         # @return [Boolean]
-        # @deprecated since 1.5.0
+        # @deprecated since 1.4.0
         def residential_proxy?
           get('is_residential_proxy')
         end
@@ -183,11 +183,11 @@ module MaxMind
         # This is true if the IP address is a Tor exit node. This property is only
         # available from Insights.
         #
-        # This method is deprecated as of version 1.5.0. Use the anonymizer object
+        # This method is deprecated as of version 1.4.0. Use the anonymizer object
         # from the Insights response instead.
         #
         # @return [Boolean]
-        # @deprecated since 1.5.0
+        # @deprecated since 1.4.0
         def tor_exit_node?
           get('is_tor_exit_node')
         end
