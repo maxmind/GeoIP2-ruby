@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.4.0
+## 1.4.0 (2025-11-20)
 
 * Ruby 3.2+ is now required. If you're using Ruby 3.0 or 3.1, please use
   version 1.3.0 of this gem.
