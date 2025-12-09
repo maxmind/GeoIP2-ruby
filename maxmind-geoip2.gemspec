@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   }
   s.required_ruby_version = '>= 3.2'
 
-  s.add_dependency 'connection_pool', ['~> 2.2']
+  s.add_dependency 'connection_pool', '>= 2.2', '< 4.0'
   s.add_dependency 'http', '>= 4.3', '< 6.0'
   s.add_dependency 'maxmind-db', ['~> 1.4']
 
