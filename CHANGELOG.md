@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.5.0
+
+* Unnecessary files were removed from the published .gem. Pull request by
+  Orien Madgwick. GitHub #131.
+
 ## 1.4.0 (2025-11-20)
 
 * Ruby 3.2+ is now required. If you're using Ruby 3.0 or 3.1, please use
