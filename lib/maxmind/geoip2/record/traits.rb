@@ -242,7 +242,15 @@ module MaxMind
         # services is more static than the IP risk score provided in minFraud
         # and is not responsive to traffic on your network. If you need realtime
         # IP risk scoring based on behavioral signals on your own network, please
-        # use minFraud. This property is only available from Insights.
+        # use minFraud.
+        #
+        # We do not provide an IP risk snapshot for low-risk networks. If this
+        # field is not populated, we either do not have signals for the network
+        # or the signals we have show that the network is low-risk. If you would
+        # like to get signals for low-risk networks, please use the minFraud web
+        # services.
+        #
+        # This property is only available from Insights.
         #
         # @return [Float, nil]
         def ip_risk_snapshot
