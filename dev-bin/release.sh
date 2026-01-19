@@ -84,6 +84,9 @@ fi
 
 perl -pi -e "s/(?<=VERSION = \').+?(?=\')/$version/g" lib/maxmind/geoip2/version.rb
 
+# Update version in Gemfile.lock.
+bundle install
+
 echo $"Test results:"
 
 rake
