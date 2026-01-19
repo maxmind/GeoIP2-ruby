@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.5.0
+## 1.5.0 (2026-01-19)
 
 * Unnecessary files were removed from the published .gem. Pull request by
   Orien Madgwick. GitHub #131.
