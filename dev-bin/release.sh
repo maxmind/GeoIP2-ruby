@@ -32,6 +32,7 @@ fi
 
 check_command perl
 check_command rake
+check_command bundle
 
 # Check that we're not on the main branch
 current_branch=$(git branch --show-current)
