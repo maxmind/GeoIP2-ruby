@@ -4,6 +4,8 @@
 
 * Unnecessary files were removed from the published .gem. Pull request by
   Orien Madgwick. GitHub #131.
+* Updated `connection_pool` dependency to allow version 3+. Reported by
+  Igor Kasyanchuk. GitHub #140.
 
 ## 1.4.0 (2025-11-20)
 
