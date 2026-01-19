@@ -38,4 +38,6 @@ jobs:
           ruby-version: ${{ matrix.version }}
 
       - run: bundle install
+        env:
+          BUNDLE_FROZEN: true
       - run: bundle exec rake -t test

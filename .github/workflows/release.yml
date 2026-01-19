@@ -31,6 +31,8 @@ jobs:
           ruby-version: ruby
 
       - run: bundle install
+        env:
+          BUNDLE_FROZEN: true
 
       # zizmor complains that 'v1' is a ref that can be provided by both the branch and tag namespaces.
       # specify that we want the v1 branch.
