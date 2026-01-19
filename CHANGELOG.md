@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.5.1 (2026-01-19)
+
+* Re-release with a fix to the release process. This includes a bump of the
+  gem's version in `Gemfile.lock`.
+
 ## 1.5.0 (2026-01-19)
 
 * Unnecessary files were removed from the published .gem. Pull request by
