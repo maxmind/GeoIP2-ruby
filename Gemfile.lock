@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    maxmind-geoip2 (1.4.0)
+    maxmind-geoip2 (1.5.1)
       connection_pool (>= 2.2, < 4.0)
       http (>= 4.3, < 6.0)
       maxmind-db (~> 1.4)
@@ -13,6 +13,7 @@ GEM
       public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
     bigdecimal (3.3.1)
+    bigdecimal (3.3.1-java)
     connection_pool (3.0.2)
     crack (1.0.1)
       bigdecimal
@@ -24,6 +25,7 @@ GEM
     ffi (1.17.2-arm-linux-gnu)
     ffi (1.17.2-arm-linux-musl)
     ffi (1.17.2-arm64-darwin)
+    ffi (1.17.2-java)
     ffi (1.17.2-x86-linux-gnu)
     ffi (1.17.2-x86-linux-musl)
     ffi (1.17.2-x86_64-darwin)
@@ -42,6 +44,7 @@ GEM
       domain_name (~> 0.5)
     http-form_data (2.3.0)
     json (2.18.0)
+    json (2.18.0-java)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     llhttp-ffi (0.5.1)
@@ -57,6 +60,7 @@ GEM
     prism (1.7.0)
     public_suffix (7.0.0)
     racc (1.8.1)
+    racc (1.8.1-java)
     rainbow (3.1.1)
     rake (13.3.1)
     regexp_parser (2.11.3)
@@ -105,6 +109,7 @@ PLATFORMS
   arm-linux-gnu
   arm-linux-musl
   arm64-darwin
+  java
   ruby
   x86-linux-gnu
   x86-linux-musl

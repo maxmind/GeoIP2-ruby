@@ -1,9 +1,16 @@
 # Changelog
 
-## 1.5.0
+## 1.5.1 (2026-01-19)
+
+* Re-release with a fix to the release process. This includes a bump of the
+  gem's version in `Gemfile.lock`.
+
+## 1.5.0 (2026-01-19)
 
 * Unnecessary files were removed from the published .gem. Pull request by
   Orien Madgwick. GitHub #131.
+* Updated `connection_pool` dependency to allow version 3+. Reported by
+  Igor Kasyanchuk. GitHub #140.
 
 ## 1.4.0 (2025-11-20)
 

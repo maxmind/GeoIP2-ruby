@@ -23,4 +23,6 @@ jobs:
           ruby-version: 3.4
 
       - run: bundle install
+        env:
+          BUNDLE_FROZEN: true
       - run: bundle exec rake -t rubocop

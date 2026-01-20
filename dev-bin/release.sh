@@ -32,6 +32,7 @@ fi
 
 check_command perl
 check_command rake
+check_command bundle
 
 # Check that we're not on the main branch
 current_branch=$(git branch --show-current)
@@ -83,6 +84,9 @@ if [ -n "$(git status --porcelain)" ]; then
 fi
 
 perl -pi -e "s/(?<=VERSION = \').+?(?=\')/$version/g" lib/maxmind/geoip2/version.rb
+
+# Update version in Gemfile.lock.
+bundle install
 
 echo $"Test results:"
 
