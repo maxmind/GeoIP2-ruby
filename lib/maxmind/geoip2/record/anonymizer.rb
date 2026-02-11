@@ -91,7 +91,7 @@ module MaxMind
           @network_last_seen = Date.parse(date_string)
         end
 
-        # The name of the VPN provider (e.g., NordVPN, SurfShark, etc.)
+        # The name of the VPN provider (e.g., nordvpn, surfshark)
         # associated with the network. This property is only available from
         # Insights.
         #

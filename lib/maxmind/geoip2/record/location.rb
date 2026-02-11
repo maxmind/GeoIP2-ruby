@@ -63,7 +63,7 @@ module MaxMind
           get('population_density')
         end
 
-        # The time zone associated with location, as specified by the IANA Time
+        # The time zone associated with the location, as specified by the IANA Time
         # Zone Database, e.g., "America/New_York". See
         # https://www.iana.org/time-zones.
         #
