@@ -37,7 +37,7 @@ class ClientTest < Minitest::Test
       'is_residential_proxy' => true,
       'is_tor_exit_node' => false,
       'network_last_seen' => '2025-10-15',
-      'provider_name' => 'NordVPN',
+      'provider_name' => 'nordvpn',
     },
     'continent' => {
       'code' => 'NA',
@@ -107,7 +107,7 @@ class ClientTest < Minitest::Test
     assert(record.anonymizer.residential_proxy?)
     refute(record.anonymizer.tor_exit_node?)
     assert_equal(Date.parse('2025-10-15'), record.anonymizer.network_last_seen)
-    assert_equal('NordVPN', record.anonymizer.provider_name)
+    assert_equal('nordvpn', record.anonymizer.provider_name)
 
     # Test traits
     assert(record.traits.anycast?)

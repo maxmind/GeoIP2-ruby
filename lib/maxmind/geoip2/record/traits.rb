@@ -41,9 +41,9 @@ module MaxMind
           get('autonomous_system_organization')
         end
 
-        # The connection type may take the following  values: "Dialup",
-        # "Cable/DSL", "Corporate", "Cellular", and "Satellite". Additional
-        # values may be added in the future. This attribute is only available
+        # The connection type may take the following values: "Cable/DSL",
+        # "Corporate", "Cellular", and "Satellite". Additional values may be
+        # added in the future. This attribute is only available
         # from the City Plus and Insights web services and the Enterprise
         # database.
         #
@@ -52,7 +52,7 @@ module MaxMind
           get('connection_type')
         end
 
-        # The second level domain associated with the IP address. This will be
+        # The second-level domain associated with the IP address. This will be
         # something like "example.com" or "example.co.uk", not "foo.example.com".
         # This attribute is only available from the City Plus and Insights web
         # services and the Enterprise database.
@@ -266,7 +266,6 @@ module MaxMind
         # * college
         # * consumer_privacy_network
         # * content_delivery_network
-        # * dialup
         # * government
         # * hosting
         # * library
