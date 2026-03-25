@@ -97,8 +97,8 @@ module MaxMind
       # @raise [ArgumentError] if used against a non-Anonymous IP database or if
       #   you attempt to look up an IPv6 address in an IPv4 only database.
       #
-      # @raise [AddressNotFoundError] if the IP address is not found in the
-      #   database.
+      # @raise [MaxMind::GeoIP2::AddressNotFoundError] if the IP address is not
+      #   found in the database.
       #
       # @raise [MaxMind::DB::InvalidDatabaseError] if the database appears
       #   corrupt.
@@ -121,8 +121,8 @@ module MaxMind
       # @raise [ArgumentError] if used against a non-Anonymous Plus database
       #   or if you attempt to look up an IPv6 address in an IPv4 only database.
       #
-      # @raise [AddressNotFoundError] if the IP address is not found in the
-      #   database.
+      # @raise [MaxMind::GeoIP2::AddressNotFoundError] if the IP address is not
+      #   found in the database.
       #
       # @raise [MaxMind::DB::InvalidDatabaseError] if the database appears
       #   corrupt.
@@ -145,8 +145,8 @@ module MaxMind
       # @raise [ArgumentError] if used against a non-ASN database or if you
       #   attempt to look up an IPv6 address in an IPv4 only database.
       #
-      # @raise [AddressNotFoundError] if the IP address is not found in the
-      #   database.
+      # @raise [MaxMind::GeoIP2::AddressNotFoundError] if the IP address is not
+      #   found in the database.
       #
       # @raise [MaxMind::DB::InvalidDatabaseError] if the database appears
       #   corrupt.
@@ -164,8 +164,8 @@ module MaxMind
       # @raise [ArgumentError] if used against a non-City database or if you
       #   attempt to look up an IPv6 address in an IPv4 only database.
       #
-      # @raise [AddressNotFoundError] if the IP address is not found in the
-      #   database.
+      # @raise [MaxMind::GeoIP2::AddressNotFoundError] if the IP address is not
+      #   found in the database.
       #
       # @raise [MaxMind::DB::InvalidDatabaseError] if the database appears
       #   corrupt.
@@ -183,8 +183,8 @@ module MaxMind
       # @raise [ArgumentError] if used against a non-Connection Type database or if
       #   you attempt to look up an IPv6 address in an IPv4 only database.
       #
-      # @raise [AddressNotFoundError] if the IP address is not found in the
-      #   database.
+      # @raise [MaxMind::GeoIP2::AddressNotFoundError] if the IP address is not
+      #   found in the database.
       #
       # @raise [MaxMind::DB::InvalidDatabaseError] if the database appears
       #   corrupt.
@@ -207,8 +207,8 @@ module MaxMind
       # @raise [ArgumentError] if used against a non-Country database or if you
       #   attempt to look up an IPv6 address in an IPv4 only database.
       #
-      # @raise [AddressNotFoundError] if the IP address is not found in the
-      #   database.
+      # @raise [MaxMind::GeoIP2::AddressNotFoundError] if the IP address is not
+      #   found in the database.
       #
       # @raise [MaxMind::DB::InvalidDatabaseError] if the database appears
       #   corrupt.
@@ -226,8 +226,8 @@ module MaxMind
       # @raise [ArgumentError] if used against a non-Domain database or if you
       #   attempt to look up an IPv6 address in an IPv4 only database.
       #
-      # @raise [AddressNotFoundError] if the IP address is not found in the
-      #   database.
+      # @raise [MaxMind::GeoIP2::AddressNotFoundError] if the IP address is not
+      #   found in the database.
       #
       # @raise [MaxMind::DB::InvalidDatabaseError] if the database appears
       #   corrupt.
@@ -245,8 +245,8 @@ module MaxMind
       # @raise [ArgumentError] if used against a non-Enterprise database or if
       #   you attempt to look up an IPv6 address in an IPv4 only database.
       #
-      # @raise [AddressNotFoundError] if the IP address is not found in the
-      #   database.
+      # @raise [MaxMind::GeoIP2::AddressNotFoundError] if the IP address is not
+      #   found in the database.
       #
       # @raise [MaxMind::DB::InvalidDatabaseError] if the database appears
       #   corrupt.
@@ -264,8 +264,8 @@ module MaxMind
       # @raise [ArgumentError] if used against a non-ISP database or if you
       #   attempt to look up an IPv6 address in an IPv4 only database.
       #
-      # @raise [AddressNotFoundError] if the IP address is not found in the
-      #   database.
+      # @raise [MaxMind::GeoIP2::AddressNotFoundError] if the IP address is not
+      #   found in the database.
       #
       # @raise [MaxMind::DB::InvalidDatabaseError] if the database appears
       #   corrupt.

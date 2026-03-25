@@ -132,26 +132,30 @@ module MaxMind
       #
       # @raise [JSON::ParserError] if there was invalid JSON in the response.
       #
-      # @raise [HTTPError] if there was a problem with the HTTP response, such as
-      #   an unexpected HTTP status code.
+      # @raise [MaxMind::GeoIP2::HTTPError] if there was a problem with the HTTP
+      #   response, such as an unexpected HTTP status code.
       #
-      # @raise [AddressInvalidError] if the web service believes the IP address
-      #   to be invalid or missing.
+      # @raise [MaxMind::GeoIP2::AddressInvalidError] if the web service believes
+      #   the IP address to be invalid or missing.
       #
-      # @raise [AddressNotFoundError] if the IP address was not found.
+      # @raise [MaxMind::GeoIP2::AddressNotFoundError] if the IP address was not
+      #   found.
       #
-      # @raise [AddressReservedError] if the IP address is reserved.
+      # @raise [MaxMind::GeoIP2::AddressReservedError] if the IP address is
+      #   reserved.
       #
-      # @raise [AuthenticationError] if there was a problem authenticating to the
-      #   web service, such as an invalid or missing license key.
+      # @raise [MaxMind::GeoIP2::AuthenticationError] if there was a problem
+      #   authenticating to the web service, such as an invalid or missing
+      #   license key.
       #
-      # @raise [InsufficientFundsError] if your account is out of credit.
+      # @raise [MaxMind::GeoIP2::InsufficientFundsError] if your account is out
+      #   of credit.
       #
-      # @raise [PermissionRequiredError] if your account does not have permission
-      #   to use the web service.
+      # @raise [MaxMind::GeoIP2::PermissionRequiredError] if your account does
+      #   not have permission to use the web service.
       #
-      # @raise [InvalidRequestError] if the web service responded with an error
-      #   and there is no more specific error to raise.
+      # @raise [MaxMind::GeoIP2::InvalidRequestError] if the web service
+      #   responded with an error and there is no more specific error to raise.
       #
       # @return [MaxMind::GeoIP2::Model::City]
       def city(ip_address = 'me')
@@ -169,26 +173,30 @@ module MaxMind
       #
       # @raise [JSON::ParserError] if there was invalid JSON in the response.
       #
-      # @raise [HTTPError] if there was a problem with the HTTP response, such as
-      #   an unexpected HTTP status code.
+      # @raise [MaxMind::GeoIP2::HTTPError] if there was a problem with the HTTP
+      #   response, such as an unexpected HTTP status code.
       #
-      # @raise [AddressInvalidError] if the web service believes the IP address
-      #   to be invalid or missing.
+      # @raise [MaxMind::GeoIP2::AddressInvalidError] if the web service believes
+      #   the IP address to be invalid or missing.
       #
-      # @raise [AddressNotFoundError] if the IP address was not found.
+      # @raise [MaxMind::GeoIP2::AddressNotFoundError] if the IP address was not
+      #   found.
       #
-      # @raise [AddressReservedError] if the IP address is reserved.
+      # @raise [MaxMind::GeoIP2::AddressReservedError] if the IP address is
+      #   reserved.
       #
-      # @raise [AuthenticationError] if there was a problem authenticating to the
-      #   web service, such as an invalid or missing license key.
+      # @raise [MaxMind::GeoIP2::AuthenticationError] if there was a problem
+      #   authenticating to the web service, such as an invalid or missing
+      #   license key.
       #
-      # @raise [InsufficientFundsError] if your account is out of credit.
+      # @raise [MaxMind::GeoIP2::InsufficientFundsError] if your account is out
+      #   of credit.
       #
-      # @raise [PermissionRequiredError] if your account does not have permission
-      #   to use the web service.
+      # @raise [MaxMind::GeoIP2::PermissionRequiredError] if your account does
+      #   not have permission to use the web service.
       #
-      # @raise [InvalidRequestError] if the web service responded with an error
-      #   and there is no more specific error to raise.
+      # @raise [MaxMind::GeoIP2::InvalidRequestError] if the web service
+      #   responded with an error and there is no more specific error to raise.
       #
       # @return [MaxMind::GeoIP2::Model::Country]
       def country(ip_address = 'me')
@@ -209,26 +217,30 @@ module MaxMind
       #
       # @raise [JSON::ParserError] if there was invalid JSON in the response.
       #
-      # @raise [HTTPError] if there was a problem with the HTTP response, such as
-      #   an unexpected HTTP status code.
+      # @raise [MaxMind::GeoIP2::HTTPError] if there was a problem with the HTTP
+      #   response, such as an unexpected HTTP status code.
       #
-      # @raise [AddressInvalidError] if the web service believes the IP address
-      #   to be invalid or missing.
+      # @raise [MaxMind::GeoIP2::AddressInvalidError] if the web service believes
+      #   the IP address to be invalid or missing.
       #
-      # @raise [AddressNotFoundError] if the IP address was not found.
+      # @raise [MaxMind::GeoIP2::AddressNotFoundError] if the IP address was not
+      #   found.
       #
-      # @raise [AddressReservedError] if the IP address is reserved.
+      # @raise [MaxMind::GeoIP2::AddressReservedError] if the IP address is
+      #   reserved.
       #
-      # @raise [AuthenticationError] if there was a problem authenticating to the
-      #   web service, such as an invalid or missing license key.
+      # @raise [MaxMind::GeoIP2::AuthenticationError] if there was a problem
+      #   authenticating to the web service, such as an invalid or missing
+      #   license key.
       #
-      # @raise [InsufficientFundsError] if your account is out of credit.
+      # @raise [MaxMind::GeoIP2::InsufficientFundsError] if your account is out
+      #   of credit.
       #
-      # @raise [PermissionRequiredError] if your account does not have permission
-      #   to use the web service.
+      # @raise [MaxMind::GeoIP2::PermissionRequiredError] if your account does
+      #   not have permission to use the web service.
       #
-      # @raise [InvalidRequestError] if the web service responded with an error
-      #   and there is no more specific error to raise.
+      # @raise [MaxMind::GeoIP2::InvalidRequestError] if the web service
+      #   responded with an error and there is no more specific error to raise.
       #
       # @return [MaxMind::GeoIP2::Model::Insights]
       def insights(ip_address = 'me')
