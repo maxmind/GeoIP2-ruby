@@ -42,7 +42,7 @@ GEM
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
     maxmind-db (1.4.0)
-    minitest (6.0.4)
+    minitest (6.0.5)
       drb (~> 2.0)
       prism (~> 1.5)
     parallel (1.28.0)
