@@ -103,7 +103,7 @@ module MaxMind
         # {https://en.wikipedia.org/wiki/Anycast anycast network}.
         #
         # This property is only available from the Country, City Plus, and
-        # Insights web services and the GeoIP2 Country, City, and Enterprise
+        # Insights web services and the GeoIP Country, City, and Enterprise
         # databases.
         #
         # @return [Boolean]

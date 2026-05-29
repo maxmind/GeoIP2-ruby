@@ -5,7 +5,7 @@ require 'maxmind/geoip2/model/abstract'
 module MaxMind
   module GeoIP2
     module Model
-      # Model class for the GeoIP2 Domain database.
+      # Model class for the GeoIP Domain database.
       class Domain < Abstract
         # The second level domain associated with the IP address. This will be
         # something like "example.com" or "example.co.uk", not "foo.example.com".

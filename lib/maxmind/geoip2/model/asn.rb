@@ -5,7 +5,7 @@ require 'maxmind/geoip2/model/abstract'
 module MaxMind
   module GeoIP2
     module Model
-      # Model class for the GeoLite2 ASN database.
+      # Model class for the GeoLite ASN database.
       class ASN < Abstract
         # The autonomous system number associated with the IP address.
         #

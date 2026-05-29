@@ -1,8 +1,8 @@
-# GeoIP2 Ruby API
+# GeoIP Ruby API
 
 ## Description
 
-This is the Ruby API for the GeoIP2 and GeoLite2
+This is the Ruby API for the GeoIP and GeoLite
 [webservices](https://dev.maxmind.com/geoip/docs/web-services?lang=en)
 and [databases](https://dev.maxmind.com/geoip/docs/databases?lang=en).
 
@@ -15,7 +15,7 @@ gem install maxmind-geoip2
 ## IP Geolocation Usage
 
 IP geolocation is inherently imprecise. Locations are often near the center
-of the population. Any location provided by a GeoIP2 database or web
+of the population. Any location provided by a GeoIP database or web
 service should not be used to identify a particular address or household.
 
 ## Database Reader
@@ -217,7 +217,7 @@ puts record.organization # University of Minnesota
 ### Usage
 
 To use this API, you must create a new `MaxMind::GeoIP2::Client` object
-with your account ID and license key. To use the GeoLite2 web service, you
+with your account ID and license key. To use the GeoLite web service, you
 may also set the `host` parameter to `geolite.info`. You may then you call
 the method corresponding to a specific end point, passing it the IP address
 you want to look up.
@@ -243,18 +243,18 @@ client = MaxMind::GeoIP2::Client.new(
   account_id: 42,
   license_key: 'license_key',
 
-  # To use the GeoLite2 web service instead of the GeoIP2 web service, set
+  # To use the GeoLite web service instead of the GeoIP web service, set
   # the host parameter to "geolite.info":
   # host: 'geolite.info',
 
-  # To use the Sandbox GeoIP2 web service instead of the production GeoIP2
+  # To use the Sandbox GeoIP web service instead of the production GeoIP
   # web service, set the host parameter to "sandbox.maxmind.com":
   # host: 'sandbox.maxmind.com',
 )
 
 # Replace "city" with the method corresponding to the web service that
 # you are using, e.g., "country", "insights". Please note that Insights
-# is only supported by the GeoIP2 web service and not the GeoLite2 web
+# is only supported by the GeoIP web service and not the GeoLite web
 # service.
 record = client.city('128.101.101.101')
 
@@ -299,7 +299,7 @@ which can be populated vary between end points. In addition, while an end
 point may offer a particular piece of data, MaxMind does not always have
 every piece of data for any given IP address.
 
-See the [GeoIP2 web service
+See the [GeoIP web service
 documentation](https://dev.maxmind.com/geoip/docs/web-services?lang=en) for details on
 what data each end point may return.
 
@@ -313,7 +313,7 @@ databases with data on geographical features around the world, including
 populated places. They offer both free and paid premium data. Each feature
 is unique identified by a `geoname_id`, which is an integer.
 
-Many of the records returned by the GeoIP2 web services and databases
+Many of the records returned by the GeoIP web services and databases
 include a `geoname_id` property. This is the ID of a geographical feature
 (city, region, country, etc.) in the GeoNames database.
 

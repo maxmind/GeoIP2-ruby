@@ -5,7 +5,7 @@ require 'maxmind/geoip2/model/abstract'
 module MaxMind
   module GeoIP2
     module Model
-      # Model class for the GeoIP2 ISP database.
+      # Model class for the GeoIP ISP database.
       class ISP < Abstract
         # The autonomous system number associated with the IP address.
         #

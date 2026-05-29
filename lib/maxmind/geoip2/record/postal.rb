@@ -22,7 +22,7 @@ module MaxMind
 
         # A value from 0-100 indicating MaxMind's confidence that the postal code
         # is correct. This attribute is only available from the Insights service
-        # and the GeoIP2 Enterprise database.
+        # and the GeoIP Enterprise database.
         #
         # @return [Integer, nil]
         def confidence

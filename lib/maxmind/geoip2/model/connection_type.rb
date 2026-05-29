@@ -5,7 +5,7 @@ require 'maxmind/geoip2/model/abstract'
 module MaxMind
   module GeoIP2
     module Model
-      # Model class for the GeoIP2 Connection Type database.
+      # Model class for the GeoIP Connection Type database.
       class ConnectionType < Abstract
         # The connection type may take the following values: "Dialup",
         # "Cable/DSL", "Corporate", "Cellular", and "Satellite". Additional
