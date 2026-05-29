@@ -9,10 +9,10 @@ Gem::Specification.new do |s|
   s.authors     = ['William Storey']
   s.files       = Dir['**/*'].difference(Dir['.github/**/*', 'dev-bin/**/*', 'test/**/*', 'CLAUDE.md', 'Gemfile*', 'Rakefile', '*.gemspec', 'README.dev.md'])
   s.name        = 'maxmind-geoip2'
-  s.summary     = 'A gem for interacting with the GeoIP2 webservices and databases.'
+  s.summary     = 'A gem for interacting with the GeoIP webservices and databases.'
   s.version     = MaxMind::GeoIP2::VERSION
 
-  s.description = 'A gem for interacting with the GeoIP2 webservices and databases. MaxMind provides geolocation data as downloadable databases as well as through a webservice.'
+  s.description = 'A gem for interacting with the GeoIP webservices and databases. MaxMind provides geolocation data as downloadable databases as well as through a webservice.'
   s.email = 'support@maxmind.com'
   s.homepage    = 'https://github.com/maxmind/GeoIP2-ruby'
   s.licenses    = ['Apache-2.0', 'MIT']

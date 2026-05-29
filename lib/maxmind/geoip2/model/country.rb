@@ -9,8 +9,8 @@ require 'maxmind/geoip2/record/traits'
 module MaxMind
   module GeoIP2
     module Model
-      # Model class for the data returned by the GeoIP2 Country web service and
-      # database. It is also used for GeoLite2 Country lookups.
+      # Model class for the data returned by the GeoIP Country web service and
+      # database. It is also used for GeoLite Country lookups.
       class Country
         # Continent data for the IP address.
         #

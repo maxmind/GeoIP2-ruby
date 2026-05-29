@@ -14,7 +14,7 @@ module MaxMind
       class City < Place
         # A value from 0-100 indicating MaxMind's confidence that the city is
         # correct. This attribute is only available from the Insights service and
-        # the GeoIP2 Enterprise database.
+        # the GeoIP Enterprise database.
         #
         # @return [Integer, nil]
         def confidence

@@ -14,7 +14,7 @@ module MaxMind
       class Subdivision < Place
         # This is a value from 0-100 indicating MaxMind's confidence that the
         # subdivision is correct. This attribute is only available from the
-        # Insights service and the GeoIP2 Enterprise database.
+        # Insights service and the GeoIP Enterprise database.
         #
         # @return [Integer, nil]
         def confidence

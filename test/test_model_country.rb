@@ -77,7 +77,7 @@ class CountryModelTest < Minitest::Test
   end
 
   # This can happen if we're being created from a not fully populated response
-  # when used by minFraud. It shouldn't ever happen from GeoIP2 though.
+  # when used by minFraud. It shouldn't ever happen from GeoIP though.
   def test_no_traits
     model = MaxMind::GeoIP2::Model::Country.new(
       {

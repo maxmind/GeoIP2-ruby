@@ -13,7 +13,7 @@ require 'resolv'
 module MaxMind
   module GeoIP2
     # This class provides a client API for all the
-    # {https://dev.maxmind.com/geoip/docs/web-services?lang=en GeoIP2 web
+    # {https://dev.maxmind.com/geoip/docs/web-services?lang=en GeoIP web
     # services}. The services are Country, City Plus, and Insights. Each service
     # returns a different set of data about an IP address, with Country returning
     # the least data and Insights the most.
@@ -60,7 +60,7 @@ module MaxMind
       # rubocop:disable Metrics/CyclomaticComplexity
       # rubocop:disable Metrics/PerceivedComplexity
 
-      # Create a Client that may be used to query a GeoIP2 web service.
+      # Create a Client that may be used to query a GeoIP web service.
       #
       # Once created, the Client is safe to use for lookups from multiple
       # threads.
@@ -73,8 +73,8 @@ module MaxMind
       #   property from most preferred to least preferred.
       #
       # @param host [String] the host to use when querying the web service. Set
-      #   this to "geolite.info" to use the GeoLite2 web service instead of the
-      #   GeoIP2 web service. Set this to "sandbox.maxmind.com" to use the
+      #   this to "geolite.info" to use the GeoLite web service instead of the
+      #   GeoIP web service. Set this to "sandbox.maxmind.com" to use the
       #   Sandbox environment. The sandbox allows you to experiment with the
       #   API without affecting your production data.
       #
@@ -205,7 +205,7 @@ module MaxMind
 
       # This method calls the Insights web service.
       #
-      # Insights is only supported by the GeoIP2 web service. The GeoLite2 web
+      # Insights is only supported by the GeoIP web service. The GeoLite web
       # service does not support it.
       #
       # @param ip_address [String] IPv4 or IPv6 address as a string. If no
