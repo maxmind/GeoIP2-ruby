@@ -14,7 +14,7 @@ require 'maxmind/geoip2/model/isp'
 
 module MaxMind
   module GeoIP2
-    # Reader is a reader for the GeoIP2/GeoLite2 database format. IP addresses
+    # Reader is a reader for the GeoIP/GeoLite database format. IP addresses
     # can be looked up using the database specific methods.
     #
     # == Example
@@ -31,7 +31,7 @@ module MaxMind
       # rubocop:disable Metrics/CyclomaticComplexity
       # rubocop:disable Metrics/PerceivedComplexity
 
-      # Create a Reader for looking up IP addresses in a GeoIP2/GeoLite2 database
+      # Create a Reader for looking up IP addresses in a GeoIP/GeoLite database
       # file.
       #
       # If you're performing multiple lookups, it's most efficient to create one
@@ -41,7 +41,7 @@ module MaxMind
       # threads. It is safe to use after forking.
       #
       # @overload initialize(database:, locales: ['en'], mode: MaxMind::DB::MODE_AUTO)
-      #   @param database [String] a path to a GeoIP2/GeoLite2 database file.
+      #   @param database [String] a path to a GeoIP/GeoLite database file.
       #   @param locales [Array<String>] a list of locale codes to use in the name
       #     property from most preferred to least preferred.
       #   @param mode [Symbol] Defines how to open the database. It may be one of
