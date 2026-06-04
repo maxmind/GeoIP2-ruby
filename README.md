@@ -3,8 +3,8 @@
 ## Description
 
 This is the Ruby API for the GeoIP and GeoLite
-[webservices](https://dev.maxmind.com/geoip/docs/web-services?lang=en)
-and [databases](https://dev.maxmind.com/geoip/docs/databases?lang=en).
+[webservices](https://dev.maxmind.com/geoip/docs/web-services/?lang=en)
+and [databases](https://dev.maxmind.com/geoip/docs/databases/?lang=en).
 
 ## Installation
 
@@ -300,7 +300,7 @@ point may offer a particular piece of data, MaxMind does not always have
 every piece of data for any given IP address.
 
 See the [GeoIP web service
-documentation](https://dev.maxmind.com/geoip/docs/web-services?lang=en) for details on
+documentation](https://dev.maxmind.com/geoip/docs/web-services/?lang=en) for details on
 what data each end point may return.
 
 The only piece of data which is always returned is the `ip_address`
@@ -324,7 +324,7 @@ GeoNames premium data set.
 ## Reporting data problems
 
 If the problem you find is that an IP address is incorrectly mapped, please
-[submit your correction to MaxMind](https://www.maxmind.com/en/correction).
+[submit your correction to MaxMind](https://www.maxmind.com/en/geoip-data-correction-request).
 
 If you find some other sort of mistake, like an incorrect spelling, please
 check the [GeoNames site](https://www.geonames.org/) first. Once you've
@@ -335,7 +335,7 @@ will be automatically incorporated into future MaxMind releases.
 
 If you are a paying MaxMind customer and you're not sure where to submit a
 correction, please [contact MaxMind
-support](https://www.maxmind.com/en/support) for help.
+support](https://support.maxmind.com/knowledge-base) for help.
 
 ## Support
 
@@ -343,7 +343,7 @@ Please report all issues with this code using the [GitHub issue
 tracker](https://github.com/maxmind/GeoIP2-ruby/issues).
 
 If you are having an issue with a MaxMind service that is not specific to the
-client API, please see [our support page](https://www.maxmind.com/en/support).
+client API, please see [our support page](https://support.maxmind.com/knowledge-base).
 
 ## Requirements
 

@@ -385,6 +385,6 @@ ruby -Ilib:test test/test_reader.rb
 ## Additional Resources
 
 - [API Documentation](https://www.rubydoc.info/gems/maxmind-geoip2)
-- [GeoIP Web Services Docs](https://dev.maxmind.com/geoip/docs/web-services)
+- [GeoIP Web Services Docs](https://dev.maxmind.com/geoip/docs/web-services/)
 - [MaxMind DB Format](https://maxmind.github.io/MaxMind-DB/)
 - GitHub Issues: https://github.com/maxmind/GeoIP2-ruby/issues

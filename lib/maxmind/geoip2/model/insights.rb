@@ -8,7 +8,7 @@ module MaxMind
     module Model
       # Model class for the data returned by the GeoIP Insights web service.
       #
-      # See https://dev.maxmind.com/geoip/docs/web-services?lang=en for more
+      # See https://dev.maxmind.com/geoip/docs/web-services/?lang=en for more
       # details.
       class Insights < City
         # Data indicating whether the IP address is part of an anonymizing
