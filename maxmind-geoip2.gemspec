@@ -7,7 +7,7 @@ require 'maxmind/geoip2/version'
 
 Gem::Specification.new do |s|
   s.authors     = ['William Storey']
-  s.files       = Dir['**/*'].difference(Dir['.github/**/*', 'dev-bin/**/*', 'test/**/*', 'CLAUDE.md', 'Gemfile*', 'Rakefile', '*.gemspec', 'README.dev.md'])
+  s.files       = Dir['**/*'].difference(Dir['.github/**/*', '.gitignore', 'lychee.toml', 'mise.lock', 'mise.toml', 'dev-bin/**/*', 'test/**/*', 'CLAUDE.md', 'Gemfile*', 'Rakefile', '*.gemspec', 'README.dev.md'])
   s.name        = 'maxmind-geoip2'
   s.summary     = 'A gem for interacting with the GeoIP webservices and databases.'
   s.version     = MaxMind::GeoIP2::VERSION
