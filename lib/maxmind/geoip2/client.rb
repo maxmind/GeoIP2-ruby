@@ -13,7 +13,7 @@ require 'resolv'
 module MaxMind
   module GeoIP2
     # This class provides a client API for all the
-    # {https://dev.maxmind.com/geoip/docs/web-services?lang=en GeoIP web
+    # {https://dev.maxmind.com/geoip/docs/web-services/?lang=en GeoIP web
     # services}. The services are Country, City Plus, and Insights. Each service
     # returns a different set of data about an IP address, with Country returning
     # the least data and Insights the most.

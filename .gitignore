@@ -21,6 +21,9 @@
 # RuboCop cache
 /.rubocop-*
 
+# Lychee link checker cache
+.lycheecache
+
 # IDE/Editor specific
 /.idea
 /.vscode
