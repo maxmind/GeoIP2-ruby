@@ -6,8 +6,11 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'maxmind/geoip2/version'
 
 Gem::Specification.new do |s|
+  excluded = Dir['.github/**/*', '.gitignore', '.gitmodules', '.rubocop.yml', 'lychee.toml',
+                 'mise.lock', 'mise.toml', 'dev-bin/**/*', 'test/**/*', 'CLAUDE.md', 'Gemfile*',
+                 'Rakefile', '*.gemspec', 'README.dev.md']
   s.authors     = ['William Storey']
-  s.files       = Dir['**/*'].difference(Dir['.github/**/*', 'dev-bin/**/*', 'test/**/*', 'CLAUDE.md', 'Gemfile*', 'Rakefile', '*.gemspec', 'README.dev.md'])
+  s.files       = IO.popen(%w[git ls-files -z], chdir: __dir__, err: IO::NULL, &:read).split("\x0").difference(excluded)
   s.name        = 'maxmind-geoip2'
   s.summary     = 'A gem for interacting with the GeoIP webservices and databases.'
   s.version     = MaxMind::GeoIP2::VERSION
