@@ -2,6 +2,7 @@
 
 require 'date'
 require 'maxmind/geoip2/record/abstract'
+require 'maxmind/geoip2/record/anonymizer_feed'
 
 module MaxMind
   module GeoIP2
@@ -11,6 +12,20 @@ module MaxMind
       #
       # This record is returned by the Insights web service.
       class Anonymizer < Abstract
+        # Residential proxy data for the network. This may be populated even
+        # when no other anonymizer attributes are set. This property is only
+        # available from Insights.
+        #
+        # @return [MaxMind::GeoIP2::Record::AnonymizerFeed]
+        attr_reader :residential
+
+        # @!visibility private
+        def initialize(record)
+          super
+
+          @residential = AnonymizerFeed.new(record.nil? ? nil : record['residential'])
+        end
+
         # A score ranging from 1 to 99 that represents our percent confidence
         # that the network is currently part of an actively used VPN service.
         # This property is only available from Insights.
