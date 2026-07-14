@@ -100,6 +100,7 @@ module MaxMind
           date_string = get('network_last_seen')
 
           if !date_string
+            @network_last_seen = nil
             return nil
           end
 
