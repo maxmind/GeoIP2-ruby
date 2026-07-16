@@ -115,6 +115,7 @@ def network_last_seen
   date_string = get('network_last_seen')
 
   if !date_string
+    @network_last_seen = nil
     return nil
   end
 
@@ -125,6 +126,7 @@ end
 - Use `defined?(@variable)` to check if already parsed
 - Parse only once and cache in instance variable
 - Handle nil cases before parsing
+- Memoize nil results too, so repeated calls do not re-run the lookup
 
 #### 5. **Web Service Only vs Database Models**
 
@@ -233,6 +235,7 @@ For database models (like AnonymousPlus):
      date_string = get('network_last_seen')
 
      if !date_string
+       @network_last_seen = nil
        return nil
      end
 

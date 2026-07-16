@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.0
+
+* A new `residential` object has been added to the `anonymizer` object on
+  `MaxMind::GeoIP2::Model::Insights`. This object contains residential
+  proxy data for the network, including a confidence score, the provider
+  name, and the date the network was last seen. This is only available
+  from the GeoIP2 Insights web service.
+
 ## 1.5.1 (2026-01-19)
 
 * Re-release with a fix to the release process. This includes a bump of the

@@ -38,6 +38,11 @@ class ClientTest < Minitest::Test
       'is_tor_exit_node' => false,
       'network_last_seen' => '2025-10-15',
       'provider_name' => 'nordvpn',
+      'residential' => {
+        'confidence' => 82,
+        'network_last_seen' => '2026-05-11',
+        'provider_name' => 'quickshift',
+      },
     },
     'continent' => {
       'code' => 'NA',
@@ -108,6 +113,11 @@ class ClientTest < Minitest::Test
     refute(record.anonymizer.tor_exit_node?)
     assert_equal(Date.parse('2025-10-15'), record.anonymizer.network_last_seen)
     assert_equal('nordvpn', record.anonymizer.provider_name)
+
+    # Test anonymizer.residential object
+    assert_equal(82, record.anonymizer.residential.confidence)
+    assert_equal(Date.parse('2026-05-11'), record.anonymizer.residential.network_last_seen)
+    assert_equal('quickshift', record.anonymizer.residential.provider_name)
 
     # Test traits
     assert(record.traits.anycast?)
