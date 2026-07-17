@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.6.0
+## 1.6.0 (2026-07-16)
 
 * A new `residential` object has been added to the `anonymizer` object on
   `MaxMind::GeoIP2::Model::Insights`. This object contains residential
