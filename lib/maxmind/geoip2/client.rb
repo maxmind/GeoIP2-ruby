@@ -309,7 +309,7 @@ module MaxMind
         handle_success(endpoint, body, is_json)
       end
 
-      # rubocop:disable Metrics/CyclomaticComplexity
+      # rubocop:disable-next Metrics/CyclomaticComplexity
       def handle_client_error(endpoint, status, body, is_json)
         if !is_json
           raise HTTPError,
@@ -343,7 +343,6 @@ module MaxMind
           raise InvalidRequestError, error['error']
         end
       end
-      # rubocop:enable Metrics/CyclomaticComplexity
 
       def handle_success(endpoint, body, is_json)
         if !is_json
