@@ -17,6 +17,11 @@ jobs:
     environment: release
     permissions:
       id-token: write
+    env:
+      # Keep the bundle out of the system gems. release-gem signs the gem
+      # with an unbundled `gem exec` that sees the system gems, and the json
+      # version in Gemfile.lock can break the signer there.
+      BUNDLE_PATH: vendor/bundle
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
