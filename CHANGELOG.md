@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.7.0
+
+* The minimum version of the `maxmind-db` gem is now 1.5.0. This version
+  limits the work and memory of each record decode and of the metadata decode
+  when a database is opened: 65,536 decoded values, 512 levels of nesting, and
+  2 MiB of string, bytes, and integer payload. Opening a database or looking up
+  an IP address raises `MaxMind::DB::InvalidDatabaseError` if a decode exceeds
+  a limit. It also rejects pointers that target pointers, and it makes lookups
+  faster. MaxMind databases are well within the limits, but a custom database
+  that worked before may now fail. See the
+  [maxmind-db 1.5.0 changelog](https://github.com/maxmind/MaxMind-DB-Reader-ruby/blob/v1.5.0/CHANGELOG.md).
+
 ## 1.6.0 (2026-07-16)
 
 * A new `residential` object has been added to the `anonymizer` object on
