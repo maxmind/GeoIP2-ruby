@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.1 (2026-11-17)
+
+* No code changes. This release republishes 1.7.0 with a Sigstore
+  attestation. The release workflow failed to sign 1.7.0 and pushed it
+  without one.
+
 ## 1.7.0 (2026-11-17)
 
 * The minimum version of the `maxmind-db` gem is now 1.5.0. This version
