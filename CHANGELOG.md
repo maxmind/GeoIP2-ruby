@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.7.0
+## 1.7.0 (2026-11-17)
 
 * The minimum version of the `maxmind-db` gem is now 1.5.0. This version
   limits the work and memory of each record decode and of the metadata decode
