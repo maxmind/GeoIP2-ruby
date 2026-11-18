@@ -17,6 +17,11 @@ jobs:
     environment: release
     permissions:
       id-token: write
+    env:
+      # Keep the bundle out of the system gems. release-gem signs the gem
+      # with an unbundled `gem exec` that sees the system gems, and the json
+      # version in Gemfile.lock can break the signer there.
+      BUNDLE_PATH: vendor/bundle
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -36,4 +41,17 @@ jobs:
 
       # zizmor complains that 'v1' is a ref that can be provided by both the branch and tag namespaces.
       # specify that we want the v1 branch.
-      - uses: rubygems/release-gem@7f9650160c1a4e7989fdc9855807bdbd421d8b6b # v1.4.1
+      - uses: rubygems/release-gem@5c53f5308233b7c0f47411f0471b3faae6fa57b2 # v1.4.2
+
+      # release-gem pushes the gem without an attestation if signing fails,
+      # and the job still passes. Fail the job so that someone notices.
+      - name: Check that RubyGems.org has an attestation
+        run: |
+          for gem in pkg/*.gem; do
+            name="$(basename "$gem" .gem)"
+            if ! curl -fsS "https://rubygems.org/api/v1/attestations/$name.json" |
+              jq -e 'length > 0' >/dev/null; then
+              echo "::error::RubyGems.org has no attestation for $name."
+              exit 1
+            fi
+          done
